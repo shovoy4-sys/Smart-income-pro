@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Smart Money Pro - Earn USDT Daily</title>
+    
+    <!-- Telegram WebApp -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <!-- AdsGram Ad Script - Zone ID: task-27659 -->
+    <script src="https://cdn.adsgram.ai/js/adsgram.js"></script> 
+    
+    <!-- Monetag Ad Zones -->
+    <script src='//libtl.com/sdk.js' data-zone='9730885' data-sdk='show_9730885'></script>
+    <script src='//libtl.com/sdk.js' data-zone='9500387' data-sdk='show_9500387'></script>
+    <script src='//libtl.com/sdk.js' data-zone='9715370' data-sdk='show_9715370'></script>
+    
+    <!-- GigaPub Ad SDK -->
+    <script src="https://ad.gigapub.tech/script?id=6316"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            color: #1e293b; 
+            transition: background-color 0.3s, color 0.3s;
+            padding-bottom: 70px;
+        }
+        .dark-mode {
+            background-color: #1e293b;
+            color: #f1f5f9;
+        }
+        .dark-mode .card-bg { 
+            background-color: #334155; 
+            border-color: #475569;
+        }
+        .card-bg { 
+            background-color: #ffffff; 
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 16px;
+        }
+        .text-accent { color: #ff8c00; }
+        .btn-accent { 
+            background: linear-gradient(135deg, #ff8c00, #ff6b00);
+            color: white; 
+            font-weight: bold;
+            transition: all 0.2s ease;
+        }
+        .btn-accent:active { transform: scale(0.96); }
+        .btn-outline-accent { 
+            border: 2px solid #ff8c00; 
+            color: #ff8c00; 
+            font-weight: bold;
+        }
+        .input-field { 
+            background-color: #f1f5f9; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 12px;
+            padding: 12px;
+        }
+        .dark-mode .input-field {
+            background-color: #475569;
+            border-color: #64748b;
+            color: white;
+        }
+        .main-page { display: none; }
+        .main-page.active { display: flex; animation: fadeIn 0.3s ease; }
+        .sub-page { display: none; }
+        .sub-page.active { display: block; animation: fadeIn 0.3s ease; }
+        .bottom-nav a.active { color: #ff8c00; }
+        .dark-mode .bottom-nav { background-color: #334155; border-color: #475569; }
+        .notification-dot {
+            position: absolute; top: -2px; right: -2px; width: 10px; height: 10px;
+            background-color: #ef4444; border-radius: 50%; display: none;
+        }
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 11px;
+            margin-left: 8px;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .social-button { transition: all 0.3s ease; }
+        .social-button:hover { transform: translateY(-2px); }
+        .referral-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .verify-button {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .support-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+        .support-btn:hover { transform: scale(1.1); }
+        .sponsor-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 18px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .sponsor-card.completed {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+        }
+        .sponsor-card.completed::after {
+            content: '✓';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #ffd700;
+            color: #333;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .sponsor-card { position: relative; }
+        .sponsor-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 10px;
+            border-radius: 12px;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+        }
+        .sponsor-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .ad-zone-badge {
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 2px 8px;
+            font-size: 10px;
+            margin-left: 8px;
+        }
+        .btn-loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .job-btn {
+            transition: all 0.2s ease;
+        }
+        .job-btn:active { transform: scale(0.96); }
+    </style>
+</head>
+<body class="max-w-md mx-auto">
+
+    <!-- Loader -->
+    <div id="loader" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="app-container" class="min-h-screen flex flex-col main-page active">
+        <!-- Header -->
+        <header class="flex items-center justify-between p-4 sticky top-0 z-10 bg-white/90 backdrop-blur-md dark-bg border-b border-gray-200">
+            <h1 class="text-xl font-bold text-slate-800">💰 Smart Money Pro</h1>
+            <div class="flex items-center gap-4">
+                <button id="dark-mode-toggle" class="dark-mode-toggle bg-transparent border-none">
+                    <i id="dark-mode-icon" data-lucide="moon" class="w-5 h-5"></i>
+                </button>
+                <div id="notification-bell" class="relative cursor-pointer">
+                    <i data-lucide="bell" class="w-5 h-5"></i>
+                    <div id="notification-dot" class="notification-dot"></div>
+                </div>
+                <i data-lucide="user" class="w-5 h-5 cursor-pointer" onclick="navigateTo('profile-page')"></i>
+            </div>
+        </header>
+
+        <main class="flex-1">
+            <!-- Home Page -->
+            <div id="home-page" class="p-4 space-y-5 sub-page active">
+                <!-- Balance Card -->
+                <div class="card-bg p-5 rounded-2xl flex items-center justify-between">
+                    <div>
+                        <p class="text-gray-500 text-sm">Your Balance</p>
+                        <p class="text-3xl font-bold text-slate-800"><span id="coin-balance">0.00</span> USDT</p>
+                    </div>
+                    <button id="home-withdraw-btn" class="bg-orange-500 text-white font-semibold px-5 py-2 rounded-xl">Withdraw</button>
+                </div>
+
+                <!-- Verification Section -->
+                <div id="verification-section" class="bg-gradient-to-r from-green-500 to-green-600 p-4 rounded-2xl text-white">
+                    <div class="flex justify-between items-center mb-2">
+                        <h3 class="font-bold">✅ Verify Account</h3>
+                        <span class="referral-badge">+0.15 USDT</span>
+                    </div>
+                    <p class="text-sm mb-3">Verify to get 0.15 USDT joining bonus!</p>
+                    <button id="verify-account-btn" class="verify-button w-full">
+                        <i data-lucide="badge-check" class="w-4 h-4"></i> Verify Now
+                    </button>
+                </div>
+
+                <!-- Tasks Section -->
+                <section>
+                    <div class="flex justify-between items-center mb-3">
+                        <div>
+                            <h2 class="text-lg font-bold text-slate-800">Daily Tasks</h2>
+                            <p class="text-xs text-gray-500">Complete tasks and earn USDT</p>
+                        </div>
+                        <p class="text-xs text-gray-500">Ads left: <span id="ads-left-count">0/10</span></p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <!-- GigaPub Ad Button (NEW) -->
+                        <div class="bg-gradient-to-r from-teal-500 to-emerald-600 p-4 rounded-xl text-white shadow-lg">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-3xl">🚀</span>
+                                    <div>
+                                        <h3 class="font-bold">Watch Ad</h3>
+                                        <p class="text-xs">Earn 0.05 USDT <span class="ad-zone-badge">New!</span></p>
+                                        <p class="text-xs opacity-80">Remaining today: <span id="gigapub-left-count">0/10</span></p>
+                                    </div>
+                                </div>
+                                <button id="gigapub-ad-btn" class="bg-white text-teal-600 font-bold px-5 py-2 rounded-xl text-sm shadow-md transition transform active:scale-95">
+                                    Watch
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- AdsGram Ad Button -->
+                        <div class="bg-gradient-to-r from-orange-500 to-red-500 p-4 rounded-xl text-white">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-3xl">🎬</span>
+                                    <div>
+                                        <h3 class="font-bold">Premium Ad</h3>
+                                        <p class="text-xs">Earn 0.05 USDT</p>
+                                    </div>
+                                </div>
+                                <button id="ad-claim-btn" class="bg-white text-orange-600 font-bold px-5 py-2 rounded-xl text-sm">
+                                    Watch
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Monetag Ad Button -->
+                        <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-4 rounded-xl text-white">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-3xl">🎯</span>
+                                    <div>
+                                        <h3 class="font-bold">Watch Ad</h3>
+                                        <p class="text-xs">Earn 0.05 USDT <span class="ad-zone-badge" id="zone-indicator">Zone 1/3</span></p>
+                                    </div>
+                                </div>
+                                <button id="monetag-ad-btn" class="bg-white text-purple-600 font-bold px-5 py-2 rounded-xl text-sm">
+                                    Watch
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Daily Jobs -->
+                        <div class="bg-gradient-to-r from-blue-600 to-cyan-600 p-4 rounded-xl text-white">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-3xl">💼</span>
+                                    <div>
+                                        <h3 class="font-bold">Daily Jobs</h3>
+                                        <p class="text-xs">20 Jobs - Earn 0.05 USDT each</p>
+                                    </div>
+                                </div>
+                                <button class="bg-white text-blue-600 font-bold px-5 py-2 rounded-xl text-sm" onclick="navigateTo('daily-jobs-page')">Start</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Sponsor Page -->
+                        <div class="bg-gradient-to-r from-pink-600 to-rose-600 p-4 rounded-xl text-white">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-3xl">🎁</span>
+                                    <div>
+                                        <h3 class="font-bold">Join Sponsors</h3>
+                                        <p class="text-xs">5 sponsors = 0.50 USDT bonus</p>
+                                    </div>
+                                </div>
+                                <button class="bg-white text-pink-600 font-bold px-5 py-2 rounded-xl text-sm" onclick="navigateTo('sponsor-page')">Join</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Telegram Channel -->
+                        <div class="bg-gradient-to-r from-sky-500 to-blue-700 p-4 rounded-xl text-white social-button">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-3xl">📢</span>
+                                    <div>
+                                        <h3 class="font-bold">Telegram Channel</h3>
+                                        <p class="text-xs">Join for latest updates</p>
+                                    </div>
+                                </div>
+                                <button id="telegram-channel-btn" class="bg-white text-blue-600 font-bold px-5 py-2 rounded-xl text-sm">
+                                    Join
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Sponsor Page -->
+            <div id="sponsor-page" class="p-4 space-y-4 sub-page">
+                <div class="flex items-center gap-3 mb-4">
+                    <button onclick="navigateTo('home-page')" class="text-gray-600"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
+                    <h2 class="text-xl font-bold text-slate-800">Sponsor Offers</h2>
+                </div>
+                <div class="text-center mb-4">
+                    <h2 class="text-2xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">🎁 Join Sponsors</h2>
+                    <p class="text-sm text-gray-500">Join 5 sponsors and get 0.50 USDT bonus</p>
+                </div>
+                <div id="sponsor-container" class="space-y-3"></div>
+                <div class="text-center text-xs text-gray-500 p-3 bg-gray-100 dark:bg-gray-800 rounded-xl">
+                    <i class="fas fa-info-circle"></i> Each sponsor gives 0.10 USDT bonus. You can rejoin after 24 hours.
+                </div>
+            </div>
+
+            <!-- Wallet Page -->
+            <div id="wallet-page" class="p-4 space-y-5 sub-page">
+                <h2 class="text-xl font-bold text-center text-slate-800">💰 My Wallet</h2>
+                <div class="card-bg p-5 rounded-2xl">
+                    <h3 class="font-bold mb-3">Withdraw Funds</h3>
+                    <p class="text-sm text-gray-500">Current Balance: <span class="font-bold text-orange-500"><span id="wallet-coin-balance">0.00</span> USDT</span></p>
+                    <p class="text-sm text-gray-500 mb-3">Minimum Withdrawal: <span id="min-withdrawal-info">20</span> USDT</p>
+                    <input id="withdraw-amount" type="number" placeholder="Enter amount in USDT" class="w-full input-field mb-3">
+                    <select id="withdraw-method" class="w-full input-field mb-3">
+                        <option value="">Select Method</option>
+                        <option value="Bkash">Bkash</option>
+                        <option value="Nagad">Nagad</option>
+                        <option value="Rocket">Rocket</option>
+                    </select>
+                    <div id="payment-details-container"></div>
+                    <button id="withdraw-btn" class="w-full btn-accent py-3 rounded-xl mt-2">Request Withdrawal</button>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-3">Withdrawal History</h3>
+                    <div id="withdrawal-history-list" class="space-y-2"></div>
+                </div>
+            </div>
+
+            <!-- Profile Page -->
+            <div id="profile-page" class="p-4 space-y-5 sub-page">
+                <h2 class="text-xl font-bold text-center text-slate-800">Profile</h2>
+                <div class="flex flex-col items-center">
+                    <img id="profile-photo" src="https://placehold.co/100x100/ff8c00/white?text=U" class="rounded-full w-24 h-24 mb-2">
+                    <div class="flex items-center">
+                        <h2 id="profile-name" class="text-xl font-bold text-slate-800">User</h2>
+                        <span id="verified-badge" class="verified-badge hidden">✓ Verified</span>
+                    </div>
+                    <p id="profile-username" class="text-gray-500">@username</p>
+                </div>
+                <div class="card-bg p-4 rounded-2xl">
+                    <h3 class="font-bold mb-2">Account Info</h3>
+                    <div class="flex justify-between"><span class="text-gray-500">Joined via:</span><span id="joined-via">Telegram</span></div>
+                    <div class="flex justify-between"><span class="text-gray-500">User ID:</span><span id="profile-user-id">-</span></div>
+                </div>
+                <div id="admin-access" class="hidden">
+                    <button onclick="navigateTo('admin-panel')" class="w-full bg-purple-600 text-white py-3 rounded-xl font-bold">Admin Panel</button>
+                </div>
+            </div>
+            
+            <!-- Notifications Page -->
+            <div id="notifications-page" class="p-4 space-y-4 sub-page">
+                <h2 class="text-xl font-bold text-center text-slate-800">📬 Inbox</h2>
+                <div id="notifications-list" class="space-y-3"></div>
+            </div>
+
+            <!-- Daily Jobs Page -->
+            <div id="daily-jobs-page" class="p-4 space-y-4 sub-page">
+                <div class="flex items-center gap-3 mb-4">
+                    <button onclick="navigateTo('home-page')" class="text-gray-600"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
+                    <h2 class="text-xl font-bold text-slate-800">Daily Jobs</h2>
+                </div>
+                <div class="card-bg p-4 text-center rounded-2xl">
+                    <p class="text-gray-500 text-sm">Click any job, watch a 15-second ad and earn 0.05 USDT!</p>
+                    <div class="flex justify-center gap-4 mt-2 text-xs">
+                        <span class="text-green-500">● Available</span>
+                        <span class="text-red-500">● Cooldown (8 hours)</span>
+                    </div>
+                </div>
+                <div id="daily-jobs-container" class="space-y-3"></div>
+            </div>
+
+            <!-- Admin Panel -->
+            <div id="admin-panel" class="p-4 space-y-5 sub-page">
+                <div class="flex items-center gap-3 mb-4">
+                    <button onclick="navigateTo('profile-page')" class="text-gray-600"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
+                    <h2 class="text-xl font-bold text-slate-800">Admin Panel</h2>
+                </div>
+                <div class="card-bg p-4 rounded-2xl">
+                    <h3 class="font-bold mb-3">Bonus Distribution</h3>
+                    <input id="bonus-amount" type="number" step="0.01" placeholder="Bonus Amount (USDT)" class="w-full input-field mb-3">
+                    <button id="send-bonus-btn" class="w-full bg-green-600 text-white py-3 rounded-xl font-bold">Give Bonus to All</button>
+                </div>
+                <div class="card-bg p-4 rounded-2xl">
+                    <h3 class="font-bold mb-3">Zone Status</h3>
+                    <div id="zone-stats" class="space-y-1 text-sm">
+                        <div class="flex justify-between"><span>AdsGram (task-27659):</span><span id="adsgram-status">✅ Active</span></div>
+                        <div class="flex justify-between"><span>Zone 9730885:</span><span id="zone1-status">⏳</span></div>
+                        <div class="flex justify-between"><span>Zone 9500387:</span><span id="zone2-status">⏳</span></div>
+                        <div class="flex justify-between"><span>Zone 9715370:</span><span id="zone3-status">⏳</span></div>
+                        <div class="flex justify-between"><span>GigaPub:</span><span id="gigapub-status">✅ Active (10/day)</span></div>
+                    </div>
+                </div>
+                <button id="send-manual-report" class="w-full bg-purple-600 text-white py-3 rounded-xl font-bold">📤 Manual Report</button>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav fixed bottom-0 left-0 right-0 max-w-md mx-auto grid grid-cols-4 items-center py-2 card-bg border-t border-gray-200">
+            <a href="#" class="nav-link active flex flex-col items-center" data-page="home-page"><i data-lucide="home" class="w-5 h-5"></i><span class="text-xs">Home</span></a>
+            <a href="#" class="nav-link flex flex-col items-center" data-page="wallet-page"><i data-lucide="wallet" class="w-5 h-5"></i><span class="text-xs">Wallet</span></a>
+            <a href="#" class="nav-link flex flex-col items-center" data-page="daily-jobs-page"><i data-lucide="briefcase" class="w-5 h-5"></i><span class="text-xs">Jobs</span></a>
+            <a href="#" class="nav-link flex flex-col items-center" data-page="sponsor-page"><i data-lucide="gift" class="w-5 h-5"></i><span class="text-xs">Sponsors</span></a>
+        </nav>
+    </div>
+    
+    <!-- Support Button -->
+    <div class="support-btn" onclick="openSupportPage()">
+        <i class="fas fa-headset"></i>
+    </div>
+
+    <!-- Custom Alert -->
+    <div id="custom-alert" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 w-full max-w-sm text-center">
+            <p id="alert-message" class="mb-4 text-slate-800 dark:text-white"></p>
+            <button id="alert-ok-btn" class="btn-accent px-6 py-2 rounded-xl">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // ==================== CONFIGURATION (USDT) ====================
+        const CONFIG = {
+            app: {
+                name: "Smart Money Pro",
+                minWithdrawal: 20,
+                dailyAdLimit: { adsgram: 10, monetag: 30, gigapub: 10 },
+                adReward: 0.05,
+                dailyJobReward: 0.05,
+                joiningBonus: 0.15,
+                sponsorBonus: 0.10
+            },
+            adsgram: { enabled: true, blockId: "int-27970", rewardAmount: 0.05 },
+            monetag: { enabled: true, zones: ['9730885', '9500387', '9715370'], rewardAmount: 0.05 },
+            gigapub: { enabled: true, rewardAmount: 0.05 },
+            social: { telegram: "https://t.me/+tLB334Ko71tjY2Y1", verificationLink: "https://t.me/Smart_money_pro_xbot" },
+            bot: { adminChatId: "7793213912", reportChannelId: "-1003331749273" },
+            support: { telegraphUrl: "https://t.me/smartmoneypro_bot" },
+            
+            dailyJobLinks: {
+                job1: "https://omg10.com/4/9717825", job2: "https://omg10.com/4/9429975", job3: "https://omg10.com/4/9446627",
+                job4: "https://encouragementglutton.com/vc1xew7t?key=9a97915b9241db71d8f53e974a75a975",
+                job5: "https://www.effectivegatecpm.com/hjt54qy2f?key=850e1a1f668e2f8cf8fbc7662317181b",
+                job6: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp", job7: "https://omg10.com/4/10338067",
+                job8: "https://encouragementglutton.com/uaw9tkid6b?key=c49281ab14f9eb6a872d63173ea7bf9c",
+                job9: "https://omg10.com/4/9570590", job10: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp",
+                job11: "https://omg10.com/4/9725607", job12: "https://t.me/f785OSC7KPk4MGJl4abot?startapp",
+                job13: "https://www.effectivegatecpm.com/rz01szx1?key=3dfb2fe6741dd7e2c5f8969bd11701c3",
+                job14: "https://www.effectivegatecpm.com/hjt54qy2f?key=850e1a1f668e2f8cf8fbc7662317181b",
+                job15: "https://www.effectivegatecpm.com/mqb7j0cy4?key=41aca66d8ffc76b0227f65cb991591ad",
+                job16: "https://omg10.com/4/9446627", job17: "https://omg10.com/4/9429975",
+                job18: "https://omg10.com/4/9717825", job19: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp",
+                job20: "https://t.me/khelahobe07_bot?startapp"
+            },
+            
+            sponsorButtons: {
+                sponsor1: { name: "All Video Downloader", icon: "fas fa-download", link: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp", reward: 0.10 },
+                sponsor2: { name: "Movie Streaming", icon: "fas fa-film", link: "https://t.me/movieflex00bot?startapp", reward: 0.10 },
+                sponsor3: { name: "Money Power", icon: "fas fa-coins", link: "https://t.me/moneypowertgbot", reward: 0.10 },
+                sponsor4: { name: "Khela Hobe", icon: "fas fa-gamepad", link: "https://t.me/khelahobe07_bot?startapp", reward: 0.10 },
+                sponsor5: { name: "Instagram Promo", icon: "fab fa-instagram", link: "https://t.me/f785OSC7KPk4MGJl4abot?startapp", reward: 0.10 }
+            }
+        };
+
+        // ==================== VARIABLES ====================
+        let currentUser = null, userData = null, currentJobTracking = null;
+        let isAdsGramShowing = false, adsGramReady = false, AdController = null;
+        let isMonetagShowing = false, monetagReady = false, monetagCount = 0, currentZoneIndex = 0, adsGramCount = 0;
+        let gigapubCount = 0, isGigaPubShowing = false;
+        let dailyStats = { date: new Date().toISOString().split('T')[0], newUsers: 0, totalUsers: 0, adsGramWatched: 0, monetagWatched: 0, gigapubWatched: 0, jobsCompleted: 0, sponsorsCompleted: 0, totalWithdrawals: 0, totalWithdrawalAmount: 0, zoneStats: { '9730885': 0, '9500387': 0, '9715370': 0 } };
+        
+        const tg = window.Telegram.WebApp;
+
+        // ==================== GIGAPUB INTEGRATION ====================
+        async function claimGigaPubReward() {
+            if (isGigaPubShowing) { showAlert("Ad is playing, please wait..."); return; }
+            const today = new Date().toISOString().split('T')[0];
+            if (gigapubCount >= CONFIG.app.dailyAdLimit.gigapub) {
+                return showAlert(`Daily GigaPub limit reached (${gigapubCount}/10). Try again tomorrow.`);
+            }
+            isGigaPubShowing = true;
+            const btn = document.getElementById('gigapub-ad-btn');
+            if (btn) { btn.innerHTML = '⏳ Loading...'; btn.disabled = true; }
+            try {
+                showAlert("Loading GigaPub ad...");
+                if (typeof window.showGiga === 'function') {
+                    await window.showGiga();
+                    gigapubCount++;
+                    userData.gigapubCount = gigapubCount;
+                    userData.lastGigaPubDate = today;
+                    userData.balance = parseFloat((userData.balance + CONFIG.app.adReward).toFixed(2));
+                    dailyStats.gigapubWatched++;
+                    saveUserToStorage(userData);
+                    saveDailyStats();
+                    updateUI();
+                    updateGigaPubUI();
+                    showAlert(`🎉 You earned ${CONFIG.app.adReward} USDT from GigaPub ad! (${gigapubCount}/10)`);
+                } else { throw new Error("showGiga function not available"); }
+            } catch(e) { console.error('GigaPub error:', e); showAlert("Failed to show GigaPub ad. Please try again."); }
+            finally { isGigaPubShowing = false; if (btn) { btn.innerHTML = 'Watch'; btn.disabled = false; } }
+        }
+        
+        function updateGigaPubUI() { const leftSpan = document.getElementById('gigapub-left-count'); if (leftSpan) leftSpan.innerText = `${gigapubCount}/10`; }
+
+        // ==================== ADSGRAM INITIALIZATION ====================
+        function initializeAdsGram() {
+            if (!CONFIG.adsgram.enabled) return;
+            if (typeof window.Adsgram !== 'undefined' && window.Adsgram) {
+                try {
+                    AdController = window.Adsgram.init({ blockId: CONFIG.adsgram.blockId, debug: true });
+                    if (AdController && typeof AdController.show === 'function') {
+                        adsGramReady = true;
+                        document.getElementById('ad-claim-btn') && (document.getElementById('ad-claim-btn').disabled = false);
+                        document.getElementById('adsgram-status') && (document.getElementById('adsgram-status').innerHTML = '✅ Active');
+                    } else { console.error('AdController invalid'); retryAdsGram(); }
+                } catch(e) { console.error('AdsGram init error:', e); retryAdsGram(); }
+            } else { retryAdsGram(); }
+        }
+        function retryAdsGram() { setTimeout(initializeAdsGram, 2000); }
+        
+        async function claimAdsGramReward() {
+            if (!adsGramReady) { showAlert("AdsGram is initializing..."); initializeAdsGram(); return; }
+            if (isAdsGramShowing) { showAlert("Ad is playing..."); return; }
+            const today = new Date().toISOString().split('T')[0];
+            if (adsGramCount >= CONFIG.app.dailyAdLimit.adsgram) {
+                return showAlert(`Daily limit reached (${adsGramCount}/10). Try again tomorrow.`);
+            }
+            isAdsGramShowing = true;
+            const btn = document.getElementById('ad-claim-btn');
+            btn && (btn.innerHTML = '⏳ Loading...', btn.disabled = true);
+            try {
+                showAlert("Loading ad...");
+                await AdController.show();
+                adsGramCount++;
+                userData.adsGramCount = adsGramCount;
+                userData.lastAdsGramDate = today;
+                userData.balance = parseFloat((userData.balance + CONFIG.app.adReward).toFixed(2));
+                dailyStats.adsGramWatched++;
+                saveUserToStorage(userData);
+                saveDailyStats();
+                updateUI();
+                showAlert(`🎉 You earned ${CONFIG.app.adReward} USDT! (${adsGramCount}/10)`);
+            } catch(e) { console.error('AdsGram error:', e); showAlert("Ad failed. Please try again."); }
+            finally { isAdsGramShowing = false; btn && (btn.innerHTML = 'Watch', btn.disabled = false); }
+        }
+
+        // ==================== MONETAG INITIALIZATION ====================
+        function initializeMonetag() {
+            if (!CONFIG.monetag.enabled) return;
+            let ready = 0;
+            CONFIG.monetag.zones.forEach(zone => { if (typeof window[`show_${zone}`] === 'function') ready++; });
+            if (ready >= 1) { monetagReady = true; updateZoneStatus(); }
+            else setTimeout(initializeMonetag, 2000);
+        }
+        
+        function updateZoneStatus() {
+            document.getElementById('zone1-status') && (document.getElementById('zone1-status').innerHTML = typeof window.show_9730885 === 'function' ? '✅ Active' : '❌');
+            document.getElementById('zone2-status') && (document.getElementById('zone2-status').innerHTML = typeof window.show_9500387 === 'function' ? '✅ Active' : '❌');
+            document.getElementById('zone3-status') && (document.getElementById('zone3-status').innerHTML = typeof window.show_9715370 === 'function' ? '✅ Active' : '❌');
+            document.getElementById('zone-indicator') && (document.getElementById('zone-indicator').innerHTML = `Zone ${currentZoneIndex+1}/3`);
+        }
+        
+        async function claimMonetagReward() {
+            if (!monetagReady) { showAlert("Monetag is initializing..."); return; }
+            if (isMonetagShowing) { showAlert("Ad is playing..."); return; }
+            const today = new Date().toISOString().split('T')[0];
+            if (monetagCount >= CONFIG.app.dailyAdLimit.monetag) {
+                return showAlert(`Daily limit reached (${monetagCount}/30).`);
+            }
+            isMonetagShowing = true;
+            const btn = document.getElementById('monetag-ad-btn');
+            btn && (btn.innerHTML = '⏳ Loading...', btn.disabled = true);
+            const currentZone = CONFIG.monetag.zones[currentZoneIndex];
+            const adFunc = `show_${currentZone}`;
+            try {
+                if (typeof window[adFunc] === 'function') {
+                    await window[adFunc]();
+                    monetagCount++;
+                    currentZoneIndex = (currentZoneIndex + 1) % CONFIG.monetag.zones.length;
+                    userData.monetagCount = monetagCount;
+                    userData.lastMonetagDate = today;
+                    userData.balance = parseFloat((userData.balance + CONFIG.app.adReward).toFixed(2));
+                    dailyStats.monetagWatched++;
+                    dailyStats.zoneStats[currentZone]++;
+                    saveUserToStorage(userData);
+                    saveDailyStats();
+                    updateUI();
+                    updateZoneStatus();
+                    showAlert(`🎉 You earned ${CONFIG.app.adReward} USDT! (${monetagCount}/30)`);
+                } else { throw new Error('Ad function not available'); }
+            } catch(e) { console.error('Monetag error:', e); showAlert("Ad failed. Please try again."); }
+            finally { isMonetagShowing = false; btn && (btn.innerHTML = 'Watch', btn.disabled = false); }
+        }
+
+        // ==================== STORAGE FUNCTIONS ====================
+        function loadUserFromStorage(userId) { const stored = localStorage.getItem(`user_${userId}`); return stored ? JSON.parse(stored) : null; }
+        function saveUserToStorage(data) { localStorage.setItem(`user_${currentUser.id}`, JSON.stringify(data)); }
+        function loadWithdrawals() { return JSON.parse(localStorage.getItem(`withdrawals_${currentUser?.id}`) || '[]'); }
+        function saveWithdrawal(withdrawal) { const w = loadWithdrawals(); w.push(withdrawal); localStorage.setItem(`withdrawals_${currentUser.id}`, JSON.stringify(w)); dailyStats.totalWithdrawals++; dailyStats.totalWithdrawalAmount += withdrawal.amount; saveDailyStats(); }
+        function loadDailyJobs() { return JSON.parse(localStorage.getItem(`daily_jobs_${currentUser?.id}`) || '[]'); }
+        function saveDailyJob(job) { const jobs = loadDailyJobs(); jobs.push(job); localStorage.setItem(`daily_jobs_${currentUser.id}`, JSON.stringify(jobs)); }
+        function loadDailyStats() { const today = new Date().toISOString().split('T')[0]; const saved = localStorage.getItem(`stats_${today}`); if(saved) dailyStats = JSON.parse(saved); else saveDailyStats(); }
+        function saveDailyStats() { localStorage.setItem(`stats_${dailyStats.date}`, JSON.stringify(dailyStats)); }
+        function incrementStat(stat) { dailyStats[stat]++; saveDailyStats(); }
+
+        // ==================== CORE FUNCTIONS ====================
+        function initTelegramApp() {
+            tg.ready(); tg.expand();
+            const user = tg.initDataUnsafe.user;
+            if(!user) { console.error("No user"); return; }
+            currentUser = { id: user.id.toString(), firstName: user.first_name || '', username: user.username || '', photoUrl: user.photo_url || '' };
+            loadUserData();
+        }
+        
+        function loadUserData() {
+            userData = loadUserFromStorage(currentUser.id);
+            const today = new Date().toISOString().split('T')[0];
+            if(!userData) {
+                userData = { uid: currentUser.id, name: currentUser.firstName || 'User', username: currentUser.username || 'N/A', balance: 0, adsGramCount: 0, monetagCount: 0, gigapubCount: 0, lastAdsGramDate: today, lastMonetagDate: today, lastGigaPubDate: today, isVerified: false, sponsorCount: 0, currentZoneIndex: 0, createdAt: new Date().toISOString() };
+                incrementStat('newUsers');
+                saveUserToStorage(userData);
+            } else {
+                if(userData.lastAdsGramDate !== today) { userData.adsGramCount = 0; userData.lastAdsGramDate = today; }
+                if(userData.lastMonetagDate !== today) { userData.monetagCount = 0; userData.lastMonetagDate = today; userData.currentZoneIndex = 0; }
+                if(userData.lastGigaPubDate !== today) { userData.gigapubCount = 0; userData.lastGigaPubDate = today; }
+                saveUserToStorage(userData);
+            }
+            adsGramCount = userData.adsGramCount || 0;
+            monetagCount = userData.monetagCount || 0;
+            gigapubCount = userData.gigapubCount || 0;
+            currentZoneIndex = userData.currentZoneIndex || 0;
+            updateUI();
+            updateGigaPubUI();
+            checkAdminAccess();
+            navigateTo('home-page');
+        }
+        
+        function updateUI() {
+            document.getElementById('coin-balance') && (document.getElementById('coin-balance').innerText = userData.balance.toFixed(2));
+            document.getElementById('wallet-coin-balance') && (document.getElementById('wallet-coin-balance').innerText = userData.balance.toFixed(2));
+            document.getElementById('profile-name') && (document.getElementById('profile-name').innerText = userData.name);
+            document.getElementById('profile-username') && (document.getElementById('profile-username').innerText = '@' + userData.username);
+            document.getElementById('profile-user-id') && (document.getElementById('profile-user-id').innerText = currentUser.id);
+            document.getElementById('ads-left-count') && (document.getElementById('ads-left-count').innerText = `${adsGramCount}/10`);
+            if(userData.isVerified) { document.getElementById('verification-section') && (document.getElementById('verification-section').style.display = 'none'); document.getElementById('verified-badge') && document.getElementById('verified-badge').classList.remove('hidden'); }
+        }
+        
+        function navigateTo(pageId) {
+            document.querySelectorAll('.sub-page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId) && document.getElementById(pageId).classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active', 'text-accent'));
+            document.querySelector(`.nav-link[data-page="${pageId}"]`) && document.querySelector(`.nav-link[data-page="${pageId}"]`).classList.add('active', 'text-accent');
+            if(pageId === 'wallet-page') loadWithdrawalHistory();
+            if(pageId === 'daily-jobs-page') { setupDailyJobs(); updateJobButtonStates(); }
+            if(pageId === 'sponsor-page') loadSponsorButtons();
+            if(pageId === 'notifications-page') loadNotifications();
+        }
+        
+        function showAlert(msg) { const a=document.getElementById('custom-alert'); document.getElementById('alert-message').innerText=msg; a.classList.remove('hidden'); document.getElementById('alert-ok-btn').onclick=()=>a.classList.add('hidden'); }
+        function openSupportPage() { tg.openLink(CONFIG.support.telegraphUrl); }
+        
+        async function handleVerification() {
+            tg.openLink(CONFIG.social.verificationLink);
+            showAlert("Verification in progress... Bonus will be added in 5 seconds.");
+            setTimeout(() => {
+                if(userData && !userData.isVerified) {
+                    userData.isVerified = true;
+                    userData.balance = parseFloat((userData.balance + CONFIG.app.joiningBonus).toFixed(2));
+                    saveUserToStorage(userData);
+                    updateUI();
+                    showAlert(`🎉 Verification complete! You received ${CONFIG.app.joiningBonus} USDT bonus!`);
+                }
+            }, 5000);
+        }
+        
+        function loadWithdrawalHistory() {
+            const w = loadWithdrawals();
+            const container = document.getElementById('withdrawal-history-list');
+            if(!container) return;
+            if(w.length===0) { container.innerHTML='<p class="text-center text-gray-500">No withdrawals yet</p>'; return; }
+            container.innerHTML = w.reverse().map(r => `<div class="card-bg p-3 rounded-xl flex justify-between"><div><p class="font-bold">${r.amount} USDT - ${r.method}</p><p class="text-xs text-gray-500">${new Date(r.requestedAt).toLocaleDateString()}</p></div><span class="text-${r.status==='pending'?'yellow-500':'green-500'}">${r.status}</span></div>`).join('');
+        }
+        
+        async function handleWithdrawal() {
+            const amount = parseFloat(document.getElementById('withdraw-amount').value);
+            const method = document.getElementById('withdraw-method').value;
+            const paymentDetail = document.getElementById('payment-detail-input')?.value;
+            if(isNaN(amount) || amount < CONFIG.app.minWithdrawal) return showAlert(`Minimum withdrawal is ${CONFIG.app.minWithdrawal} USDT`);
+            if(amount > userData.balance) return showAlert("Insufficient balance");
+            if(!method || !paymentDetail) return showAlert("Please fill all details");
+            userData.balance = parseFloat((userData.balance - amount).toFixed(2));
+            saveWithdrawal({ userId: currentUser.id, amount, method, paymentDetails: paymentDetail, status: "pending", requestedAt: new Date().toISOString() });
+            saveUserToStorage(userData);
+            updateUI();
+            loadWithdrawalHistory();
+            showAlert("Withdrawal request submitted!");
+            document.getElementById('withdraw-amount').value = '';
+            document.getElementById('withdraw-method').value = '';
+            document.getElementById('payment-details-container').innerHTML = '';
+        }
+        
+        function updateDynamicPaymentFields() {
+            const m = document.getElementById('withdraw-method').value;
+            const ph = m==='Bkash'?'Bkash Number': m==='Nagad'?'Nagad Number': m==='Rocket'?'Rocket Number':'Payment Details';
+            document.getElementById('payment-details-container').innerHTML = `<input id="payment-detail-input" type="text" placeholder="${ph}" class="w-full input-field">`;
+        }
+        
+        function setupDailyJobs() {
+            const container = document.getElementById('daily-jobs-container');
+            if(!container) return;
+            container.innerHTML = '';
+            for(let i=1;i<=20;i++) {
+                const link = CONFIG.dailyJobLinks[`job${i}`];
+                container.innerHTML += `<div class="card-bg p-3 rounded-xl flex justify-between items-center"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">${i}</div><div><h3 class="font-medium">Job ${i}</h3><p class="text-xs text-gray-500">Earn 0.05 USDT</p></div></div><button id="job-btn-${i}" data-link="${link}" class="job-btn bg-green-600 text-white px-4 py-2 rounded-lg text-sm">Start</button></div>`;
+            }
+            for(let i=1;i<=20;i++) document.getElementById(`job-btn-${i}`)?.addEventListener('click',()=>handleJobClick(i));
+        }
+        
+        async function updateJobButtonStates() {
+            if(!currentUser) return;
+            const completed = loadDailyJobs();
+            const lastCompletions = {};
+            completed.forEach(job => { if(!lastCompletions[job.jobId] || new Date(job.completedAt) > lastCompletions[job.jobId]) lastCompletions[job.jobId] = new Date(job.completedAt); });
+            for(let i=1;i<=20;i++) {
+                const btn = document.getElementById(`job-btn-${i}`);
+                if(!btn) continue;
+                const last = lastCompletions[i];
+                if(last && (Date.now() - last.getTime()) < 8*3600000) {
+                    const rem = 8*3600000 - (Date.now() - last.getTime());
+                    const h = Math.floor(rem/3600000), m = Math.floor((rem%3600000)/60000);
+                    btn.innerHTML = `${h}h ${m}m`;
+                    btn.className = 'bg-red-600 text-white px-4 py-2 rounded-lg text-sm opacity-70';
+                    btn.disabled = true;
+                } else { btn.innerHTML = 'Start'; btn.className = 'job-btn bg-green-600 text-white px-4 py-2 rounded-lg text-sm'; btn.disabled = false; }
+            }
+        }
+        
+        async function handleJobClick(jobId) {
+            const btn = document.getElementById(`job-btn-${jobId}`);
+            if(btn.disabled) return showAlert("This job is on cooldown!");
+            const link = btn.getAttribute('data-link');
+            if(!link || link==='#') return showAlert("No link available");
+            currentJobTracking = { jobId, startTime: Date.now(), link };
+            tg.openLink(link);
+            showAlert("Watch the ad, then return after 15 seconds to claim reward!");
+            setTimeout(() => { if(currentJobTracking?.jobId === jobId) completeJob(jobId); }, 15000);
+        }
+        
+        async function completeJob(jobId) {
+            saveDailyJob({ userId: currentUser.id, jobId, completedAt: new Date().toISOString(), coinsEarned: CONFIG.app.dailyJobReward });
+            userData.balance = parseFloat((userData.balance + CONFIG.app.dailyJobReward).toFixed(2));
+            incrementStat('jobsCompleted');
+            saveUserToStorage(userData);
+            updateUI();
+            updateJobButtonStates();
+            showAlert(`🎉 You earned ${CONFIG.app.dailyJobReward} USDT!`);
+            currentJobTracking = null;
+        }
+        
+        document.addEventListener('visibilitychange', () => { if(!document.hidden && currentJobTracking && (Date.now()-currentJobTracking.startTime)>=15000) completeJob(currentJobTracking.jobId); });
+        
+        function loadSponsorButtons() {
+            const container = document.getElementById('sponsor-container');
+            if(!container) return;
+            container.innerHTML = '';
+            for(let i=1;i<=5;i++) {
+                const s = CONFIG.sponsorButtons[`sponsor${i}`];
+                const status = getSponsorStatus(i);
+                container.innerHTML += `<div class="sponsor-card ${status.completed?'completed':''}" id="sponsor-${i}"><div class="flex items-center gap-3 mb-3"><div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center"><i class="${s.icon} text-xl"></i></div><h3 class="font-bold">${s.name}</h3></div><div class="bg-yellow-400 text-gray-800 inline-block px-3 py-1 rounded-full text-sm mb-3">+${s.reward} USDT</div><button class="sponsor-btn" onclick="window.handleSponsorClick(${i})" ${status.completed||status.cooldown>0?'disabled':''}>${status.completed?'Completed':status.cooldown>0?formatTime(status.cooldown):'Join Now'}</button></div>`;
+            }
+        }
+        
+        function getSponsorStatus(sponsorId) {
+            const data = localStorage.getItem(`sponsor_${currentUser?.id}_${sponsorId}`);
+            if(!data) return { completed: false, cooldown: 0 };
+            const d = JSON.parse(data);
+            const elapsed = Date.now() - new Date(d.completedAt).getTime();
+            if(elapsed < 24*3600000) return { completed: true, cooldown: 24*3600000 - elapsed };
+            localStorage.removeItem(`sponsor_${currentUser.id}_${sponsorId}`);
+            return { completed: false, cooldown: 0 };
+        }
+        
+        function formatTime(ms) { const h=Math.floor(ms/3600000), m=Math.floor((ms%3600000)/60000); return `${h}h ${m}m`; }
+        
+        window.handleSponsorClick = async function(sponsorId) {
+            const s = CONFIG.sponsorButtons[`sponsor${sponsorId}`];
+            tg.openLink(s.link);
+            showAlert("Bonus will be added in 5 seconds...");
+            setTimeout(() => {
+                localStorage.setItem(`sponsor_${currentUser.id}_${sponsorId}`, JSON.stringify({ completedAt: new Date().toISOString() }));
+                userData.balance = parseFloat((userData.balance + CONFIG.app.sponsorBonus).toFixed(2));
+                incrementStat('sponsorsCompleted');
+                saveUserToStorage(userData);
+                updateUI();
+                loadSponsorButtons();
+                showAlert(`🎉 You earned ${CONFIG.app.sponsorBonus} USDT bonus!`);
+            }, 5000);
+        };
+        
+        function loadNotifications() {
+            const n = [{title:"Payment Update!",msg:"Minimum withdrawal is now 20 USDT."},{title:"Welcome!",msg:"Welcome to Smart Money Pro!"},{title:"Bonus Offer!",msg:"Verify your account to get 0.15 USDT bonus!"}];
+            document.getElementById('notifications-list').innerHTML = n.map(not=>`<div class="card-bg p-4 rounded-xl"><h3 class="font-bold">${not.title}</h3><p class="text-sm text-gray-500">${not.msg}</p></div>`).join('');
+        }
+        
+        function checkAdminAccess() { if(currentUser?.id === CONFIG.bot.adminChatId) document.getElementById('admin-access')?.classList.remove('hidden'); }
+        
+        async function sendBonusToAllUsers() {
+            const amount = parseFloat(document.getElementById('bonus-amount').value);
+            if(isNaN(amount) || amount <= 0) return showAlert("Enter valid bonus amount");
+            for(let i=0;i<localStorage.length;i++) { const key=localStorage.key(i); if(key?.startsWith('user_')) { const u=JSON.parse(localStorage.getItem(key)); u.balance = parseFloat((u.balance + amount).toFixed(2)); localStorage.setItem(key,JSON.stringify(u)); } }
+            userData = loadUserFromStorage(currentUser.id);
+            updateUI();
+            showAlert(`Bonus of ${amount} USDT sent to all users!`);
+        }
+        
+        async function sendReport() {
+            const msg = `📊 Smart Money Pro Report\n📅 ${new Date().toLocaleString()}\n👥 Total Users: ${dailyStats.totalUsers}\n💰 Today's Earnings: AdsGram:${dailyStats.adsGramWatched}, Monetag:${dailyStats.monetagWatched}, GigaPub:${dailyStats.gigapubWatched||0}\n💵 Total Withdrawn: ${dailyStats.totalWithdrawalAmount} USDT`;
+            try { await fetch(`https://api.telegram.org/bot7793213912:AAFvPB1DZ8nrkUzXpwZPeXxplw6BNrirPxs/sendMessage`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ chat_id:CONFIG.bot.reportChannelId, text:msg }) }); } catch(e){}
+        }
+        
+        function setupEventListeners() {
+            document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',e=>{ e.preventDefault(); navigateTo(l.dataset.page); }));
+            document.getElementById('ad-claim-btn')?.addEventListener('click', claimAdsGramReward);
+            document.getElementById('monetag-ad-btn')?.addEventListener('click', claimMonetagReward);
+            document.getElementById('gigapub-ad-btn')?.addEventListener('click', claimGigaPubReward);
+            document.getElementById('verify-account-btn')?.addEventListener('click', handleVerification);
+            document.getElementById('withdraw-btn')?.addEventListener('click', handleWithdrawal);
+            document.getElementById('home-withdraw-btn')?.addEventListener('click', ()=>navigateTo('wallet-page'));
+            document.getElementById('withdraw-method')?.addEventListener('change', updateDynamicPaymentFields);
+            document.getElementById('telegram-channel-btn')?.addEventListener('click', ()=>tg.openLink(CONFIG.social.telegram));
+            document.getElementById('send-bonus-btn')?.addEventListener('click', sendBonusToAllUsers);
+            document.getElementById('send-manual-report')?.addEventListener('click', ()=>{ sendReport(); showAlert("Report sent!"); });
+            document.getElementById('dark-mode-toggle')?.addEventListener('click', ()=>{ document.body.classList.toggle('dark-mode'); localStorage.setItem('theme', document.body.classList.contains('dark-mode')?'dark':'light'); });
+            if(localStorage.getItem('theme')==='dark') document.body.classList.add('dark-mode');
+        }
+        
+        window.onload = () => { lucide.createIcons(); setupEventListeners(); initTelegramApp(); loadDailyStats(); initializeAdsGram(); initializeMonetag(); setInterval(updateJobButtonStates, 60000); };
+        window.navigateTo = navigateTo; window.showAlert = showAlert; window.openSupportPage = openSupportPage;
+    </script>
+</body>
+</html>
