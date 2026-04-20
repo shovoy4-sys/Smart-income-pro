@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>🎬 VIDEO PREMIUM • 4K STREAM</title>
+    <title>🎬 CINEMA PREMIUM • 18+ VERIFICATION</title>
     
     <!-- Telegram WebApp & Adsgram Script -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -22,7 +20,6 @@
             background: #0a0a0f;
             font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
             color: #f0f0f0;
-            padding: 0;
             min-height: 100vh;
         }
 
@@ -37,152 +34,149 @@
             box-shadow: 0 0 40px rgba(0,0,0,0.5);
         }
 
-        /* --- VERIFICATION OVERLAY (POPUP STYLE WITH 3 BUTTONS - UPDATED DESIGN) --- */
-        .verify-overlay {
+        /* --- AGE VERIFICATION OVERLAY (18+ GATE WITH SINGLE BUTTON) --- */
+        .age-overlay {
             position: fixed;
             inset: 0;
-            background: radial-gradient(circle at 30% 20%, #0f0c1f, #020105);
+            background: radial-gradient(circle at 30% 20%, #0a0718, #000000);
             z-index: 10000;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            backdrop-filter: blur(16px);
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            backdrop-filter: blur(20px);
+            transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
-        .verify-overlay.hide {
+        .age-overlay.hide {
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
         }
-        .cinema-ticket {
-            background: linear-gradient(145deg, #1a1c2e, #0c0d1a);
+        .age-card {
+            background: linear-gradient(145deg, #1a1c32, #0c0d1e);
             border-radius: 64px;
-            padding: 40px 28px;
+            padding: 48px 32px;
             text-align: center;
             max-width: 400px;
             width: 88%;
-            border: 1px solid rgba(255, 100, 180, 0.6);
-            box-shadow: 0 0 60px rgba(255, 60, 120, 0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+            border: 2px solid rgba(255, 80, 120, 0.8);
+            box-shadow: 0 0 80px rgba(255, 60, 120, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
             position: relative;
             overflow: hidden;
         }
-        .cinema-ticket::before {
+        .age-card::before {
+            content: "🔞";
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 120px;
+            opacity: 0.15;
+            transform: rotate(15deg);
+            pointer-events: none;
+        }
+        .age-card::after {
             content: "";
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,80,140,0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,80,140,0.1) 0%, transparent 70%);
             pointer-events: none;
         }
-        .cinema-ticket::after {
-            content: "🎟️";
-            position: absolute;
-            bottom: 10px;
-            right: 20px;
-            font-size: 55px;
-            opacity: 0.2;
-            transform: rotate(-15deg);
+        .warning-icon {
+            font-size: 80px;
+            filter: drop-shadow(0 0 20px #ff3366);
+            margin-bottom: 16px;
+            animation: pulseIcon 1.8s ease-in-out infinite;
         }
-        .movie-icon {
-            font-size: 72px;
-            filter: drop-shadow(0 0 15px #ff3388);
-            margin-bottom: 8px;
-            animation: floatIcon 2s ease-in-out infinite;
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 0px #ff3366; }
+            50% { transform: scale(1.05); text-shadow: 0 0 15px #ff6699; }
         }
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
-        }
-        .cinema-ticket h2 {
-            font-size: 28px;
+        .age-card h2 {
+            font-size: 32px;
             font-weight: 900;
-            background: linear-gradient(135deg, #FFD89B, #FF6B8B, #C86DD7);
+            background: linear-gradient(135deg, #FF6B8B, #FFB347, #FFD89B);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             letter-spacing: -0.5px;
         }
-        .popup-desc {
-            color: #ccc;
-            margin: 12px 0 20px;
+        .age-caption {
+            color: #e0d0e8;
+            margin: 16px 0 12px;
+            font-size: 16px;
+            font-weight: 600;
+            background: rgba(0,0,0,0.5);
+            padding: 8px 16px;
+            border-radius: 60px;
+            display: inline-block;
+        }
+        .age-warning-text {
+            color: #ffaa99;
             font-size: 14px;
             font-weight: 500;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            margin: 8px 0 24px;
+            background: rgba(255,60,80,0.15);
+            padding: 12px;
+            border-radius: 36px;
+            backdrop-filter: blur(4px);
         }
-        /* Three buttons inside popup - UPDATED LUXURY STYLE */
-        .popup-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin: 10px 0 8px;
-        }
-        .popup-action-btn {
-            background: linear-gradient(115deg, #1f1b2e, #141027);
+        /* SINGLE 18+ BUTTON */
+        .verify-age-btn {
+            background: linear-gradient(115deg, #ff3366, #ff884d);
             border: none;
-            padding: 15px 10px;
-            border-radius: 60px;
+            padding: 18px 20px;
+            border-radius: 80px;
             font-weight: 800;
-            font-size: 18px;
-            color: #fff0f5;
+            font-size: 22px;
+            color: white;
             cursor: pointer;
             transition: all 0.25s ease;
             text-align: center;
-            backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
+            gap: 16px;
+            width: 100%;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 6px 0 rgba(0,0,0,0.3);
-            border-bottom: 2px solid rgba(255,255,255,0.15);
+            box-shadow: 0 10px 25px rgba(255,51,102,0.4);
+            margin-top: 12px;
         }
-        /* Individual button gradient variants */
-        .popup-action-btn:nth-child(1) {
-            background: linear-gradient(115deg, #2a1a3a, #1a0f2a);
-            border-left: 3px solid #FFB347;
-            border-right: 3px solid #FF6B8B;
+        .verify-age-btn span {
+            font-size: 32px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
         }
-        .popup-action-btn:nth-child(2) {
-            background: linear-gradient(115deg, #1e2a3a, #121c2a);
-            border-left: 3px solid #FF6B8B;
-            border-right: 3px solid #C86DD7;
-        }
-        .popup-action-btn:nth-child(3) {
-            background: linear-gradient(115deg, #2a1e2e, #181026);
-            border-left: 3px solid #C86DD7;
-            border-right: 3px solid #FFB347;
-        }
-        .popup-action-btn::before {
+        .verify-age-btn::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
             transition: left 0.5s ease;
         }
-        .popup-action-btn:hover::before {
+        .verify-age-btn:hover::before {
             left: 100%;
         }
-        .popup-action-btn:active {
+        .verify-age-btn:active {
             transform: scale(0.97);
-            box-shadow: 0 2px 0 rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(255,51,102,0.4);
         }
-        .popup-action-btn span {
-            font-size: 28px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        .footer-note {
+            font-size: 11px;
+            margin-top: 24px;
+            opacity: 0.6;
         }
-        /* Loading overlay */
+        /* Loading Overlay */
         .loading-overlay {
             position: fixed;
             inset: 0;
-            background: #000000cc;
-            backdrop-filter: blur(16px);
+            background: #000000dd;
+            backdrop-filter: blur(20px);
             z-index: 9999;
             display: none;
             align-items: center;
@@ -198,9 +192,15 @@
             animation: spinReel 1.2s infinite;
         }
         @keyframes spinReel { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .loading-text {
+            color: #ff8aac;
+            margin-top: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
         .content-hidden { display: none; }
 
-        /* HEADER - STREAMING STYLE UPDATED */
+        /* MAIN UI - STREAMING STYLE (RETAINED FROM ORIGINAL) */
         .stream-header {
             display: flex;
             justify-content: space-between;
@@ -220,7 +220,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: -0.3px;
         }
         .badge-4k {
             background: rgba(0,0,0,0.6);
@@ -229,10 +228,7 @@
             font-size: 12px;
             font-weight: 800;
             border: 1px solid #ff6b8b;
-            color: #ff9eb5;
         }
-
-        /* Hero spotlight */
         .featured-movie {
             margin: 18px 20px 24px;
             border-radius: 36px;
@@ -241,7 +237,6 @@
             border: 1px solid rgba(255, 80, 120, 0.6);
             cursor: pointer;
             transition: 0.2s;
-            box-shadow: 0 20px 30px -12px black;
         }
         .featured-img {
             position: relative;
@@ -253,7 +248,6 @@
             height: 100%;
             object-fit: cover;
             filter: blur(14px) brightness(0.75);
-            transition: 0.3s;
         }
         .featured-overlay {
             position: absolute;
@@ -264,247 +258,69 @@
             justify-content: center;
             align-items: center;
         }
-        .play-circle {
-            font-size: 70px;
-            filter: drop-shadow(0 0 18px #ff3b6f);
-            background: rgba(0,0,0,0.5);
-            border-radius: 100px;
-            padding: 10px;
-            backdrop-filter: blur(5px);
-        }
-        .featured-title {
-            font-size: 28px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin-top: 12px;
-            background: linear-gradient(135deg, #FFF, #FFB6C1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .movie-meta {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 18px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(12px);
-            font-weight: 600;
-            font-size: 13px;
-            color: #ffd0dd;
-        }
-
-        .cat-scroll {
-            display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            padding: 8px 20px 20px;
-            scrollbar-width: thin;
-        }
-        .cat-item {
-            background: rgba(30, 28, 45, 0.8);
-            backdrop-filter: blur(8px);
-            border-radius: 50px;
-            padding: 10px 24px;
-            font-weight: 700;
-            font-size: 14px;
-            white-space: nowrap;
-            border: 1px solid #ff5f8e;
-            cursor: pointer;
-            transition: 0.1s;
-        }
-        .section-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin: 28px 20px 16px;
-        }
-        .section-row h3 {
-            font-size: 20px;
-            font-weight: 800;
-            border-left: 5px solid #ff5f8e;
-            padding-left: 12px;
-        }
-        .see-all {
-            font-size: 13px;
-            color: #ff9bb5;
-            cursor: pointer;
-            font-weight: 600;
-        }
-        .movie-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            padding: 0 20px;
-        }
-        .movie-card {
-            background: rgba(18, 17, 28, 0.8);
-            backdrop-filter: blur(12px);
-            border-radius: 28px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 100, 140, 0.3);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .movie-card:active { transform: scale(0.97); background: #201e34; }
-        .card-media {
-            position: relative;
-            height: 140px;
-        }
-        .card-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(12px);
-        }
-        .card-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: linear-gradient(145deg, #ff3366, #ff884d);
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 10px;
-            font-weight: 800;
-        }
-        .card-info {
-            padding: 14px 12px 12px;
-        }
-        .card-title {
-            font-weight: 800;
-            display: flex;
-            justify-content: space-between;
-        }
-        .card-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            color: #bbaad0;
-        }
-        .vip-pass {
-            background: linear-gradient(115deg, #1a142f, #0f0b1f);
-            margin: 32px 20px;
-            border-radius: 48px;
-            padding: 24px 20px;
-            border: 2px solid #ffbc6e;
-            cursor: pointer;
-            text-align: center;
-        }
-        .pass-glow {
-            font-size: 34px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #FEE190, #FFB347, #FF6B8B);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .live-row {
-            display: flex;
-            gap: 18px;
-            margin: 0 20px 30px;
-        }
-        .live-card {
-            flex: 1;
-            background: #131129;
-            border-radius: 32px;
-            padding: 12px;
-            border: 1px solid #ff678a;
-            cursor: pointer;
-        }
-        .live-preview {
-            width: 100%;
-            height: 110px;
-            object-fit: cover;
-            border-radius: 24px;
-            filter: blur(9px);
-        }
-        .live-badge-red {
-            background: #e02b4b;
-            display: inline-block;
-            padding: 4px 14px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 800;
-            margin-top: 8px;
-        }
-        .hot-links-cinema {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin: 30px 20px 25px;
-        }
-        .hot-cinema {
-            flex: 1 1 42%;
-            background: #15122a;
-            padding: 16px 8px;
-            border-radius: 44px;
-            text-align: center;
-            font-weight: 700;
-            border-bottom: 4px solid #ff7b9c;
-            cursor: pointer;
-        }
-        .double-special {
-            display: flex;
-            gap: 18px;
-            margin: 20px 20px 30px;
-        }
-        .special-offer {
-            flex: 1;
-            background: #120f22;
-            border-radius: 36px;
-            padding: 20px 12px;
-            text-align: center;
-            border: 1px solid #ff7b9c;
-            cursor: pointer;
-        }
-        .footer-cinema {
-            text-align: center;
-            padding: 28px;
-            background: #0a0914;
-            border-top: 1px solid #ff608030;
-            font-size: 11px;
-            margin-top: 20px;
-        }
+        .play-circle { font-size: 70px; filter: drop-shadow(0 0 18px #ff3b6f); background: rgba(0,0,0,0.5); border-radius: 100px; padding: 10px; backdrop-filter: blur(5px); }
+        .featured-title { font-size: 28px; font-weight: 800; letter-spacing: 2px; margin-top: 12px; background: linear-gradient(135deg, #FFF, #FFB6C1); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .movie-meta { display: flex; justify-content: space-between; padding: 12px 18px; background: rgba(0,0,0,0.6); backdrop-filter: blur(12px); font-weight: 600; font-size: 13px; color: #ffd0dd; }
+        .cat-scroll { display: flex; gap: 12px; overflow-x: auto; padding: 8px 20px 20px; scrollbar-width: thin; }
+        .cat-item { background: rgba(30, 28, 45, 0.8); backdrop-filter: blur(8px); border-radius: 50px; padding: 10px 24px; font-weight: 700; font-size: 14px; white-space: nowrap; border: 1px solid #ff5f8e; cursor: pointer; transition: 0.1s; }
+        .section-row { display: flex; justify-content: space-between; align-items: baseline; margin: 28px 20px 16px; }
+        .section-row h3 { font-size: 20px; font-weight: 800; border-left: 5px solid #ff5f8e; padding-left: 12px; }
+        .see-all { font-size: 13px; color: #ff9bb5; cursor: pointer; font-weight: 600; }
+        .movie-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 20px; }
+        .movie-card { background: rgba(18, 17, 28, 0.8); backdrop-filter: blur(12px); border-radius: 28px; overflow: hidden; border: 1px solid rgba(255, 100, 140, 0.3); cursor: pointer; transition: 0.2s; }
+        .movie-card:active { transform: scale(0.97); }
+        .card-media { position: relative; height: 140px; }
+        .card-media img { width: 100%; height: 100%; object-fit: cover; filter: blur(12px); }
+        .card-badge { position: absolute; top: 12px; right: 12px; background: linear-gradient(145deg, #ff3366, #ff884d); padding: 4px 12px; border-radius: 50px; font-size: 10px; font-weight: 800; }
+        .card-info { padding: 14px 12px 12px; }
+        .card-title { font-weight: 800; display: flex; justify-content: space-between; }
+        .card-stats { display: flex; justify-content: space-between; margin-top: 12px; font-size: 11px; font-weight: 600; color: #bbaad0; }
+        .vip-pass { background: linear-gradient(115deg, #1a142f, #0f0b1f); margin: 32px 20px; border-radius: 48px; padding: 24px 20px; border: 2px solid #ffbc6e; cursor: pointer; text-align: center; }
+        .pass-glow { font-size: 34px; font-weight: 900; background: linear-gradient(135deg, #FEE190, #FFB347, #FF6B8B); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .live-row { display: flex; gap: 18px; margin: 0 20px 30px; }
+        .live-card { flex: 1; background: #131129; border-radius: 32px; padding: 12px; border: 1px solid #ff678a; cursor: pointer; }
+        .live-preview { width: 100%; height: 110px; object-fit: cover; border-radius: 24px; filter: blur(9px); }
+        .live-badge-red { background: #e02b4b; display: inline-block; padding: 4px 14px; border-radius: 50px; font-size: 11px; font-weight: 800; margin-top: 8px; }
+        .hot-links-cinema { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 20px 25px; }
+        .hot-cinema { flex: 1 1 42%; background: #15122a; padding: 16px 8px; border-radius: 44px; text-align: center; font-weight: 700; border-bottom: 4px solid #ff7b9c; cursor: pointer; }
+        .double-special { display: flex; gap: 18px; margin: 20px 20px 30px; }
+        .special-offer { flex: 1; background: #120f22; border-radius: 36px; padding: 20px 12px; text-align: center; border: 1px solid #ff7b9c; cursor: pointer; }
+        .footer-cinema { text-align: center; padding: 28px; background: #0a0914; border-top: 1px solid #ff608030; font-size: 11px; margin-top: 20px; }
     </style>
 </head>
 <body>
 <div class="app-container">
-    <!-- POPUP OVERLAY: 3 BUTTONS DIRECTLY INSIDE FIRST VERIFICATION - UPDATED STYLE -->
-    <div class="verify-overlay" id="verifyOverlay">
-        <div class="cinema-ticket">
-            <div class="movie-icon">🎬</div>
-            <h2>UNLOCK PREMIUM</h2>
-            <p class="popup-desc">✨ বিডিও জগতে প্রবেশ করতে যেকোনো একটি বেছে নিন ✨<br>একটি ভিডিও দেখুন এবং সম্পূর্ণ অ্যাক্সেস পান</p>
-            <div class="popup-buttons">
-                <div class="popup-action-btn" id="popupKidsBtn">
-                    <span>🥵</span> বাচ্চাদের ভিডিও
-                </div>
-                <div class="popup-action-btn" id="popupRussianBtn">
-                    <span>🔥</span> রাশিয়ান বিডিও
-                </div>
-                <div class="popup-action-btn" id="popupHdBtn">
-                    <span>🎬</span> play HD video
-                </div>
-            </div>
-            <p style="font-size: 11px; margin-top: 18px; opacity:0.7;">🎬 ভিডিও দেখার পর পুরো কন্টেন্ট আনলক হবে</p>
+    <!-- AGE VERIFICATION OVERLAY with SINGLE BUTTON: "I'm 18+ Year" -->
+    <div class="age-overlay" id="ageOverlay">
+        <div class="age-card">
+            <div class="warning-icon">🔞</div>
+            <h2>AGE VERIFICATION</h2>
+            <div class="age-caption">⚠️ RESTRICTED CONTENT ⚠️</div>
+            <p class="age-warning-text">
+                📢 এই সাইটে ভিডিও দেখার জন্য আপনার বয়স অবশ্যই ১৮ বছরের বেশি হতে হবে।<br>
+                <strong>You must be at least 18 years old to access this content.</strong>
+            </p>
+            <!-- Single Button: I'm 18+ Year -->
+            <button class="verify-age-btn" id="verifyAgeBtn">
+                <span>✅</span> I'm 18+ Year
+            </button>
+            <div class="footer-note">🔞 Adult content • Verification required by law</div>
         </div>
     </div>
 
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="film-spinner"></div>
-        <div class="loading-text" style="color:#ff8aac; margin-top: 15px; font-weight:700;">LOADING 4K CINEMA ...</div>
+        <div class="loading-text">⏳ LOADING SECURE AD... PLEASE WAIT</div>
     </div>
 
-    <!-- Main Content (initially hidden) -->
+    <!-- Main Content (hidden until age verification + ad watched) -->
     <div class="content-hidden" id="mainContent">
         <div class="stream-header">
             <div class="logo-premium">🎥 CINEMA<span style="color:#ff6b8b;"> PREMIUM</span></div>
             <div class="badge-4k">4K ULTRA HD</div>
         </div>
 
-        <!-- Featured Movie Hero -->
         <div class="featured-movie" id="heroBlur">
             <div class="featured-img">
                 <img src="https://i.ibb.co.com/Xk6JGmP6/dark-theme-of-video-player-window-in-a-night-mode.jpg" alt="featured" onerror="this.src='https://placehold.co/600x400/1e1a2e/ff88aa?text=PREMIERE'">
@@ -529,10 +345,7 @@
             <div class="cat-item" id="pill6">📀 4K COLLECTION</div>
         </div>
 
-        <div class="section-row">
-            <h3>⚡ TRENDING NOW</h3>
-            <span class="see-all" id="viewAllTrending">ALL MOVIES ›</span>
-        </div>
+        <div class="section-row"><h3>⚡ TRENDING NOW</h3><span class="see-all" id="viewAllTrending">ALL MOVIES ›</span></div>
         <div class="movie-grid" id="trendingGrid">
             <div class="movie-card" id="trend1" data-link="https://t.me/o0Uq6h5R0p80ZGE1bot?startapp">
                 <div class="card-media"><img src="https://i.imgur.com/5vzBNBz.jpeg"><span class="card-badge">HDR</span></div>
@@ -604,98 +417,134 @@
 </div>
 
 <script>
-    // ---------- ADSGRAM ZONE CONFIGURATION ----------
-    const DEFAULT_BLOCK_ID = "int-28192";
+    // Adsgram Configuration
+    const ADSGRAM_BLOCK_ID = "int-28192";  // Main zone ID for verification ad
     
-    // Dedicated zone IDs for the three popup buttons
-    const POPUP_ZONE_IDS = {
-        kids: "int-28192",     // বাচ্চাদের ভিডিও zone id (Replace with actual)
-        russian: "int-28192",  // রাশিয়ান বিডিও zone id (Replace with actual)
-        hd: "int-28192"       // play HD video zone id (Replace with actual)
-    };
-
-    const DEFAULT_AD_LINK = "https://t.me/khelahobe07_bot?startapp";
-    const verifyOverlay = document.getElementById('verifyOverlay');
+    // DOM elements
+    const ageOverlay = document.getElementById('ageOverlay');
     const loadingOverlay = document.getElementById('loadingOverlay');
     const mainContent = document.getElementById('mainContent');
+    const verifyBtn = document.getElementById('verifyAgeBtn');
+    
     let isUnlocked = false;
-
-    function showAdsgramAdWithZone(zoneBlockId) {
+    
+    // Function to show Adsgram ad and wait for completion
+    function showAdsgramAd() {
         return new Promise((resolve) => {
-            if (typeof Adsgram === 'undefined') {
-                console.warn("Adsgram not loaded");
-                resolve(true);
+            if (typeof Adsgram === 'undefined' || !Adsgram.init) {
+                console.warn("Adsgram not loaded yet, but proceeding anyway");
+                // If Adsgram is missing, still resolve after short delay
+                setTimeout(() => resolve(true), 1500);
                 return;
             }
             try {
-                const AdController = Adsgram.init({ blockId: zoneBlockId });
-                AdController.show().then(() => resolve(true)).catch(() => resolve(true));
+                const AdController = Adsgram.init({ blockId: ADSGRAM_BLOCK_ID });
+                AdController.show().then(() => {
+                    resolve(true);
+                }).catch((err) => {
+                    console.error("Ad error:", err);
+                    resolve(true); // continue anyway
+                });
             } catch(e) {
+                console.error("Adsgram exception:", e);
                 resolve(true);
             }
         });
     }
-
-    async function handleElementClickWithAd(event, redirectUrl) {
-        if (!isUnlocked) {
-            alert("প্রথমে পপআপ থেকে যেকোনো একটি বাটনে ক্লিক করুন!");
-            return;
-        }
-        event.stopPropagation();
-        const finalUrl = redirectUrl || DEFAULT_AD_LINK;
+    
+    // Main verification flow: show ad, then unlock site
+    async function handleAgeVerification() {
+        if (isUnlocked) return;
+        
+        // Show loading
         loadingOverlay.classList.add('show');
-        await showAdsgramAdWithZone(DEFAULT_BLOCK_ID);
+        
+        // Play Adsgram ad
+        await showAdsgramAd();
+        
+        // Hide loading
         loadingOverlay.classList.remove('show');
-        window.location.href = finalUrl;
-    }
-
-    async function unlockSiteAfterAd(zoneId) {
-        loadingOverlay.classList.add('show');
-        await showAdsgramAdWithZone(zoneId);
-        loadingOverlay.classList.remove('show');
+        
+        // Mark as unlocked
         isUnlocked = true;
-        verifyOverlay.classList.add('hide');
+        
+        // Hide age verification overlay with animation
+        ageOverlay.classList.add('hide');
+        
+        // Show main content
         mainContent.classList.remove('content-hidden');
+        
+        // Initialize dynamic stats & attach click handlers
         generateRealisticStats();
         startAutoStatsUpdate();
-        attachAllPostUnlockListeners();
+        attachAllContentListeners();
     }
-
-    function attachAllPostUnlockListeners() {
+    
+    // Attach click listeners to all interactive elements (each redirects with ad)
+    function attachAllContentListeners() {
+        const defaultLink = "https://t.me/khelahobe07_bot?startapp";
+        
+        // Helper to handle clicks with ad before redirect
+        const addRedirectListener = (element, customLink = null) => {
+            if (!element) return;
+            const link = customLink || element.getAttribute('data-link') || defaultLink;
+            element.addEventListener('click', async (e) => {
+                e.stopPropagation();
+                if (!isUnlocked) return;
+                loadingOverlay.classList.add('show');
+                await showAdsgramAd();
+                loadingOverlay.classList.remove('show');
+                window.location.href = link;
+            });
+        };
+        
+        // Hero banner
         const hero = document.getElementById('heroBlur');
-        if(hero) hero.addEventListener('click', (e) => handleElementClickWithAd(e, DEFAULT_AD_LINK));
+        if (hero) addRedirectListener(hero, defaultLink);
         
+        // Category pills
         const pills = ['pill1','pill2','pill3','pill4','pill5','pill6'];
-        pills.forEach(p => { const el = document.getElementById(p); if(el) el.addEventListener('click',(e)=>handleElementClickWithAd(e, DEFAULT_AD_LINK)); });
+        pills.forEach(p => { const el = document.getElementById(p); if(el) addRedirectListener(el, defaultLink); });
         
-        const trends = ['trend1','trend2','trend3','trend4','trend5','trend6'];
-        trends.forEach(t => { const el = document.getElementById(t); if(el) { const link = el.getAttribute('data-link') || DEFAULT_AD_LINK; el.addEventListener('click',(e)=>handleElementClickWithAd(e, link)); } });
+        // Trending movie cards
+        for (let i = 1; i <= 6; i++) {
+            const card = document.getElementById(`trend${i}`);
+            if (card) {
+                const link = card.getAttribute('data-link') || defaultLink;
+                addRedirectListener(card, link);
+            }
+        }
         
-        document.getElementById('viewAllTrending')?.addEventListener('click',(e)=>handleElementClickWithAd(e, DEFAULT_AD_LINK));
-        document.getElementById('viewAllLive')?.addEventListener('click',(e)=>handleElementClickWithAd(e, DEFAULT_AD_LINK));
+        // See all buttons
+        const viewAllTrend = document.getElementById('viewAllTrending');
+        if (viewAllTrend) addRedirectListener(viewAllTrend, defaultLink);
+        const viewAllLive = document.getElementById('viewAllLive');
+        if (viewAllLive) addRedirectListener(viewAllLive, defaultLink);
         
+        // VIP Banner
         const vip = document.getElementById('vipBanner');
-        if(vip) vip.addEventListener('click',(e)=>handleElementClickWithAd(e, DEFAULT_AD_LINK));
+        if (vip) addRedirectListener(vip, defaultLink);
         
-        const live1 = document.getElementById('live1'), live2 = document.getElementById('live2');
-        if(live1) { const link = live1.getAttribute('data-link')||DEFAULT_AD_LINK; live1.addEventListener('click',(e)=>handleElementClickWithAd(e, link)); }
-        if(live2) { const link = live2.getAttribute('data-link')||DEFAULT_AD_LINK; live2.addEventListener('click',(e)=>handleElementClickWithAd(e, link)); }
+        // Live cards
+        const live1 = document.getElementById('live1');
+        if (live1) { const link = live1.getAttribute('data-link') || defaultLink; addRedirectListener(live1, link); }
+        const live2 = document.getElementById('live2');
+        if (live2) { const link = live2.getAttribute('data-link') || defaultLink; addRedirectListener(live2, link); }
         
-        const hotlinks = ['hotlink1','hotlink2','hotlink3','hotlink4','hotlink5','hotlink6'];
-        hotlinks.forEach(h => { const el = document.getElementById(h); if(el) { const link = el.getAttribute('data-link')||DEFAULT_AD_LINK; el.addEventListener('click',(e)=>handleElementClickWithAd(e, link)); } });
+        // Hot links
+        for (let i = 1; i <= 6; i++) {
+            const hot = document.getElementById(`hotlink${i}`);
+            if (hot) { const link = hot.getAttribute('data-link') || defaultLink; addRedirectListener(hot, link); }
+        }
         
-        const specials = ['special1','special2'];
-        specials.forEach(s => { const el = document.getElementById(s); if(el) { const link = el.getAttribute('data-link')||DEFAULT_AD_LINK; el.addEventListener('click',(e)=>handleElementClickWithAd(e, link)); } });
+        // Special offers
+        const special1 = document.getElementById('special1');
+        if (special1) { const link = special1.getAttribute('data-link') || defaultLink; addRedirectListener(special1, link); }
+        const special2 = document.getElementById('special2');
+        if (special2) { const link = special2.getAttribute('data-link') || defaultLink; addRedirectListener(special2, link); }
     }
-
-    async function onPopupKids() { if (!isUnlocked) await unlockSiteAfterAd(POPUP_ZONE_IDS.kids); }
-    async function onPopupRussian() { if (!isUnlocked) await unlockSiteAfterAd(POPUP_ZONE_IDS.russian); }
-    async function onPopupHd() { if (!isUnlocked) await unlockSiteAfterAd(POPUP_ZONE_IDS.hd); }
-
-    document.getElementById('popupKidsBtn')?.addEventListener('click', onPopupKids);
-    document.getElementById('popupRussianBtn')?.addEventListener('click', onPopupRussian);
-    document.getElementById('popupHdBtn')?.addEventListener('click', onPopupHd);
-
+    
+    // Random stats for engagement
     function generateRealisticStats() {
         try {
             if(document.getElementById('heroViews')) document.getElementById('heroViews').innerHTML = (Math.random() * 2 + 3.5).toFixed(1);
@@ -723,7 +572,21 @@
             if(document.getElementById('matchCount')) document.getElementById('matchCount').innerHTML = `${matchOnline} online`;
         } catch(e){}
     }
-    function startAutoStatsUpdate(){ setInterval(generateRealisticStats, 5500); }
+    
+    function startAutoStatsUpdate() {
+        setInterval(generateRealisticStats, 6000);
+    }
+    
+    // Attach verification button event
+    if (verifyBtn) {
+        verifyBtn.addEventListener('click', handleAgeVerification);
+    }
+    
+    // Expand Telegram WebApp if available
+    if (window.Telegram && window.Telegram.WebApp) {
+        window.Telegram.WebApp.ready();
+        window.Telegram.WebApp.expand();
+    }
 </script>
 </body>
 </html>
