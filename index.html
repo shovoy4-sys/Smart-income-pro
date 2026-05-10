@@ -3,21 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Smart Money Pro - Earn in USD</title>
+    <title>Smart Income - Earn in USD</title>
     
     <!-- Telegram WebApp -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
     <!-- AdsGram Ad Script - zone ID: task-27659 -->
     <script src="https://cdn.adsgram.ai/js/adsgram.js"></script> 
-    
-    <!-- Monetag Ad Zones -->
-    <script src='//libtl.com/sdk.js' data-zone='9730885' data-sdk='show_9730885'></script>
-    <script src='//libtl.com/sdk.js' data-zone='9500387' data-sdk='show_9500387'></script>
-    <script src='//libtl.com/sdk.js' data-zone='9715370' data-sdk='show_9715370'></script>
-    
-    <!-- GigaPub Ad SDK -->
-    <script src="https://ad.gigapub.tech/script?id=6316"></script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> 
@@ -28,23 +20,14 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: #f8fafc; 
-            color: #1e293b; 
-            transition: background-color 0.3s, color 0.3s;
+            background-color: #1e293b; 
+            color: #f1f5f9; 
             padding-bottom: 70px;
         }
-        .dark-mode {
-            background-color: #1e293b;
-            color: #f1f5f9;
-        }
-        .dark-mode .card-bg { 
-            background-color: #334155; 
-            border-color: #475569;
-        }
+        /* Dark mode only - forced */
         .card-bg { 
-            background-color: #ffffff; 
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            background-color: #334155; 
+            border: 1px solid #475569;
             border-radius: 16px;
         }
         .text-accent { color: #f59e0b; }
@@ -55,122 +38,40 @@
             transition: all 0.2s ease;
         }
         .btn-accent:active { transform: scale(0.96); }
-        .btn-outline-accent { 
-            border: 2px solid #f59e0b; 
-            color: #f59e0b; 
-            font-weight: bold;
-        }
         .input-field { 
-            background-color: #f1f5f9; 
-            border: 1px solid #e2e8f0; 
+            background-color: #475569; 
+            border: 1px solid #64748b; 
             border-radius: 12px;
             padding: 12px;
-        }
-        .dark-mode .input-field {
-            background-color: #475569;
-            border-color: #64748b;
             color: white;
         }
+        .input-field::placeholder { color: #94a3b8; }
+        .input-field:focus { outline: none; border-color: #f59e0b; }
         .main-page { display: none; }
         .main-page.active { display: flex; animation: fadeIn 0.3s ease; }
         .sub-page { display: none; }
         .sub-page.active { display: block; animation: fadeIn 0.3s ease; }
         .bottom-nav a.active { color: #f59e0b; }
-        .dark-mode .bottom-nav { background-color: #334155; border-color: #475569; }
+        .bottom-nav { background-color: #334155; border-color: #475569; }
         .notification-dot {
             position: absolute; top: -2px; right: -2px; width: 10px; height: 10px;
             background-color: #ef4444; border-radius: 50%; display: none;
         }
-        .verified-badge {
-            display: inline-flex;
-            align-items: center;
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            color: white;
-            border-radius: 20px;
-            padding: 2px 10px;
-            font-size: 11px;
-            margin-left: 8px;
-        }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .social-button { transition: all 0.3s ease; }
-        .social-button:hover { transform: translateY(-2px); }
-        .referral-badge {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        .sponsor-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            padding: 18px;
-            color: white;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        .sponsor-card.completed {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-        }
-        .sponsor-card.completed::after {
-            content: '✓';
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: #ffd700;
-            color: #333;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        .sponsor-btn {
-            background: white;
-            color: #667eea;
-            border: none;
-            padding: 10px;
-            border-radius: 12px;
-            font-weight: bold;
-            width: 100%;
-            cursor: pointer;
-        }
-        .sponsor-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-        .ad-zone-badge {
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            padding: 2px 8px;
-            font-size: 10px;
-            margin-left: 8px;
-        }
         .job-btn:active { transform: scale(0.96); }
-        .support-btn {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 22px;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            border: 2px solid white;
+        .ad-card {
+            transition: all 0.2s ease;
         }
-        .support-btn:hover { transform: scale(1.1); }
-        .btn-loading {
-            opacity: 0.6;
-            pointer-events: none;
+        .ad-card:active { transform: scale(0.98); }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #1e293b; }
+        ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 4px; }
+        header {
+            background-color: #1e293b;
+            border-bottom: 1px solid #334155;
         }
+        select option { background-color: #334155; color: white; }
     </style>
 </head>
 <body class="max-w-md mx-auto">
@@ -183,17 +84,14 @@
     <!-- Main Container -->
     <div id="app-container" class="min-h-screen flex flex-col main-page active">
         <!-- Header -->
-        <header class="flex items-center justify-between p-4 sticky top-0 z-10 bg-white/90 backdrop-blur-md dark-bg border-b border-gray-200">
-            <h1 class="text-xl font-bold text-slate-800">💰 Smart Money Pro</h1>
+        <header class="flex items-center justify-between p-4 sticky top-0 z-10 border-b border-gray-700">
+            <h1 class="text-xl font-bold text-white">💰 Smart Income</h1>
             <div class="flex items-center gap-4">
-                <button id="dark-mode-toggle" class="dark-mode-toggle bg-transparent border-none">
-                    <i id="dark-mode-icon" data-lucide="moon" class="w-5 h-5"></i>
-                </button>
                 <div id="notification-bell" class="relative cursor-pointer">
-                    <i data-lucide="bell" class="w-5 h-5"></i>
+                    <i data-lucide="bell" class="w-5 h-5 text-white"></i>
                     <div id="notification-dot" class="notification-dot"></div>
                 </div>
-                <i data-lucide="user" class="w-5 h-5 cursor-pointer" onclick="navigateTo('profile-page')"></i>
+                <i data-lucide="user" class="w-5 h-5 cursor-pointer text-white" onclick="navigateTo('profile-page')"></i>
             </div>
         </header>
 
@@ -203,8 +101,8 @@
                 <!-- Balance Card -->
                 <div class="card-bg p-5 rounded-2xl flex items-center justify-between">
                     <div>
-                        <p class="text-gray-500 text-sm">Your Balance</p>
-                        <p class="text-3xl font-bold text-slate-800">$<span id="coin-balance">0.00</span></p>
+                        <p class="text-gray-300 text-sm">Your Balance</p>
+                        <p class="text-3xl font-bold text-white">$<span id="coin-balance">0.00</span></p>
                     </div>
                     <button id="home-withdraw-btn" class="bg-orange-500 text-white font-semibold px-5 py-2 rounded-xl">Withdraw</button>
                 </div>
@@ -213,116 +111,55 @@
                 <section>
                     <div class="flex justify-between items-center mb-3">
                         <div>
-                            <h2 class="text-lg font-bold text-slate-800">Daily Tasks</h2>
-                            <p class="text-xs text-gray-500">Complete tasks & earn USD</p>
+                            <h2 class="text-lg font-bold text-white">Daily Tasks</h2>
+                            <p class="text-xs text-gray-400">Complete tasks & earn USD</p>
                         </div>
-                        <p class="text-xs text-gray-500">Today's limit: <span id="total-ads-count">0/30</span></p>
+                        <p class="text-xs text-gray-400">Today's limit: <span id="total-ads-count">0/5</span></p>
                     </div>
                     
                     <div class="space-y-3">
-                        <!-- GigaPub Ad Button (NEW) -->
-                        <div class="bg-gradient-to-r from-teal-500 to-emerald-600 p-4 rounded-xl text-white shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-3xl">🚀</span>
-                                    <div>
-                                        <h3 class="font-bold">Watch ad - GigaPub</h3>
-                                        <p class="text-xs">Earn $0.50 per ad</p>
-                                        <p class="text-xs opacity-80">Remaining: <span id="gigapub-left-count">0/10</span></p>
-                                    </div>
-                                </div>
-                                <button id="gigapub-ad-btn" class="bg-white text-teal-600 font-bold px-5 py-2 rounded-xl text-sm shadow-md transition transform active:scale-95">
-                                    Watch on GigaPub
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- AdsGram Ad Button -->
-                        <div class="bg-gradient-to-r from-orange-500 to-red-500 p-4 rounded-xl text-white">
+                        <!-- AdsGram Ad Button (Only Ad Network - 5 per day) -->
+                        <div class="bg-gradient-to-r from-orange-500 to-red-500 p-4 rounded-xl text-white shadow-lg ad-card">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap-3">
                                     <span class="text-3xl">🎬</span>
                                     <div>
                                         <h3 class="font-bold">Watch ad - AdsGram</h3>
                                         <p class="text-xs">Earn $0.50 per ad</p>
+                                        <p class="text-xs opacity-80">Remaining: <span id="adsgram-left-count">0/5</span></p>
                                     </div>
                                 </div>
-                                <button id="ad-claim-btn" class="bg-white text-orange-600 font-bold px-5 py-2 rounded-xl text-sm">
-                                    Watch ad AdsGram
+                                <button id="ad-claim-btn" class="bg-white text-orange-600 font-bold px-5 py-2 rounded-xl text-sm shadow-md transition transform active:scale-95">
+                                    Watch AdsGram
                                 </button>
                             </div>
                         </div>
                         
-                        <!-- Monetag Ad Button -->
-                        <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-4 rounded-xl text-white">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-3xl">🎯</span>
-                                    <div>
-                                        <h3 class="font-bold">Watch ad - Monetag</h3>
-                                        <p class="text-xs">Earn $0.50 per ad</p>
-                                    </div>
-                                </div>
-                                <button id="monetag-ad-btn" class="bg-white text-purple-600 font-bold px-5 py-2 rounded-xl text-sm">
-                                    Watch on Monetag
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Daily Jobs -->
-                        <div class="bg-gradient-to-r from-blue-600 to-cyan-600 p-4 rounded-xl text-white">
+                        <!-- Daily Jobs Card -->
+                        <div class="bg-gradient-to-r from-blue-600 to-cyan-600 p-4 rounded-xl text-white shadow-lg">
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap-3">
                                     <span class="text-3xl">💼</span>
                                     <div>
                                         <h3 class="font-bold">Daily Jobs</h3>
                                         <p class="text-xs">20 jobs - $0.50 each</p>
+                                        <p class="text-xs opacity-80">Complete & earn instantly</p>
                                     </div>
                                 </div>
-                                <button class="bg-white text-blue-600 font-bold px-5 py-2 rounded-xl text-sm" onclick="navigateTo('daily-jobs-page')">Start</button>
-                            </div>
-                        </div>
-                        
-                        <!-- Sponsor Page -->
-                        <div class="bg-gradient-to-r from-pink-600 to-rose-600 p-4 rounded-xl text-white">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-3xl">🎁</span>
-                                    <div>
-                                        <h3 class="font-bold">Join Sponsors</h3>
-                                        <p class="text-xs">$1.00 bonus for 5 sponsors</p>
-                                    </div>
-                                </div>
-                                <button class="bg-white text-pink-600 font-bold px-5 py-2 rounded-xl text-sm" onclick="navigateTo('sponsor-page')">Join</button>
+                                <button class="bg-white text-blue-600 font-bold px-5 py-2 rounded-xl text-sm shadow-md" onclick="navigateTo('daily-jobs-page')">Start</button>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
 
-            <!-- Sponsor Page -->
-            <div id="sponsor-page" class="p-4 space-y-4 sub-page">
-                <div class="flex items-center gap-3 mb-4">
-                    <button onclick="navigateTo('home-page')" class="text-gray-600"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
-                    <h2 class="text-xl font-bold text-slate-800">Sponsor Offers</h2>
-                </div>
-                <div class="text-center mb-4">
-                    <h2 class="text-2xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">🎁 Join Sponsors</h2>
-                    <p class="text-sm text-gray-500">Complete 5 sponsors and earn $1.00 bonus</p>
-                </div>
-                <div id="sponsor-container" class="space-y-3"></div>
-                <div class="text-center text-xs text-gray-500 p-3 bg-gray-100 dark:bg-gray-800 rounded-xl">
-                    <i class="fas fa-info-circle"></i> Each sponsor gives $0.20 bonus. You can rejoin after 24 hours.
-                </div>
-            </div>
-
             <!-- Wallet Page -->
             <div id="wallet-page" class="p-4 space-y-5 sub-page">
-                <h2 class="text-xl font-bold text-center text-slate-800">💰 My Wallet</h2>
+                <h2 class="text-xl font-bold text-center text-white">💰 My Wallet</h2>
                 <div class="card-bg p-5 rounded-2xl">
-                    <h3 class="font-bold mb-3">Withdraw Funds</h3>
-                    <p class="text-sm text-gray-500">Current Balance: <span class="font-bold text-orange-500">$<span id="wallet-coin-balance">0.00</span></span></p>
-                    <p class="text-sm text-gray-500 mb-3">Min Withdrawal: <span id="min-withdrawal-info">20.00</span> USD</p>
+                    <h3 class="font-bold text-white mb-3">Withdraw Funds</h3>
+                    <p class="text-sm text-gray-300">Current Balance: <span class="font-bold text-orange-400">$<span id="wallet-coin-balance">0.00</span></span></p>
+                    <p class="text-sm text-gray-300 mb-3">Min Withdrawal: <span id="min-withdrawal-info">20.00</span> USD</p>
                     <input id="withdraw-amount" type="number" placeholder="Enter amount USD" class="w-full input-field mb-3">
                     <select id="withdraw-method" class="w-full input-field mb-3">
                         <option value="">Select Method</option>
@@ -334,25 +171,26 @@
                     <button id="withdraw-btn" class="w-full btn-accent py-3 rounded-xl mt-2">Request Withdrawal</button>
                 </div>
                 <div>
-                    <h3 class="font-bold mb-3">Withdrawal History</h3>
+                    <h3 class="font-bold text-white mb-3">Withdrawal History</h3>
                     <div id="withdrawal-history-list" class="space-y-2"></div>
                 </div>
             </div>
 
             <!-- Profile Page -->
             <div id="profile-page" class="p-4 space-y-5 sub-page">
-                <h2 class="text-xl font-bold text-center text-slate-800">Profile</h2>
+                <h2 class="text-xl font-bold text-center text-white">Profile</h2>
                 <div class="flex flex-col items-center">
                     <img id="profile-photo" src="https://placehold.co/100x100/f59e0b/white?text=U" class="rounded-full w-24 h-24 mb-2">
                     <div class="flex items-center">
-                        <h2 id="profile-name" class="text-xl font-bold text-slate-800">User</h2>
+                        <h2 id="profile-name" class="text-xl font-bold text-white">User</h2>
                     </div>
-                    <p id="profile-username" class="text-gray-500">@username</p>
+                    <p id="profile-username" class="text-gray-400">@username</p>
                 </div>
                 <div class="card-bg p-4 rounded-2xl">
-                    <h3 class="font-bold mb-2">Account Info</h3>
-                    <div class="flex justify-between"><span class="text-gray-500">Joined via:</span><span id="joined-via">Telegram</span></div>
-                    <div class="flex justify-between"><span class="text-gray-500">User ID:</span><span id="profile-user-id">-</span></div>
+                    <h3 class="font-bold text-white mb-2">Account Info</h3>
+                    <div class="flex justify-between"><span class="text-gray-300">Joined via:</span><span class="text-white">Telegram</span></div>
+                    <div class="flex justify-between"><span class="text-gray-300">User ID:</span><span id="profile-user-id" class="text-white">-</span></div>
+                    <div class="flex justify-between mt-2"><span class="text-gray-300">Total Earned:</span><span id="total-earned" class="font-bold text-green-400">$0.00</span></div>
                 </div>
                 <div id="admin-access" class="hidden">
                     <button onclick="navigateTo('admin-panel')" class="w-full bg-purple-600 text-white py-3 rounded-xl font-bold">Admin Panel</button>
@@ -361,21 +199,21 @@
             
             <!-- Notifications Page -->
             <div id="notifications-page" class="p-4 space-y-4 sub-page">
-                <h2 class="text-xl font-bold text-center text-slate-800">📬 Inbox</h2>
+                <h2 class="text-xl font-bold text-center text-white">📬 Inbox</h2>
                 <div id="notifications-list" class="space-y-3"></div>
             </div>
 
             <!-- Daily Jobs Page -->
             <div id="daily-jobs-page" class="p-4 space-y-4 sub-page">
                 <div class="flex items-center gap-3 mb-4">
-                    <button onclick="navigateTo('home-page')" class="text-gray-600"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
-                    <h2 class="text-xl font-bold text-slate-800">Daily Jobs</h2>
+                    <button onclick="navigateTo('home-page')" class="text-gray-300"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
+                    <h2 class="text-xl font-bold text-white">Daily Jobs</h2>
                 </div>
                 <div class="card-bg p-4 text-center rounded-2xl">
-                    <p class="text-gray-500 text-sm">Click on any job, watch ad for 15 seconds and earn $0.50!</p>
+                    <p class="text-gray-300 text-sm">Click on any job, watch ad for 15 seconds and earn $0.50!</p>
                     <div class="flex justify-center gap-4 mt-2 text-xs">
-                        <span class="text-green-500">● Available</span>
-                        <span class="text-red-500">● Cooldown (8 hours)</span>
+                        <span class="text-green-400">● Available</span>
+                        <span class="text-red-400">● Cooldown (8 hours)</span>
                     </div>
                 </div>
                 <div id="daily-jobs-container" class="space-y-3"></div>
@@ -384,46 +222,37 @@
             <!-- Admin Panel -->
             <div id="admin-panel" class="p-4 space-y-5 sub-page">
                 <div class="flex items-center gap-3 mb-4">
-                    <button onclick="navigateTo('profile-page')" class="text-gray-600"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
-                    <h2 class="text-xl font-bold text-slate-800">Admin Panel</h2>
+                    <button onclick="navigateTo('profile-page')" class="text-gray-300"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
+                    <h2 class="text-xl font-bold text-white">Admin Panel</h2>
                 </div>
                 <div class="card-bg p-4 rounded-2xl">
-                    <h3 class="font-bold mb-3">Send Bonus to All</h3>
+                    <h3 class="font-bold text-white mb-3">Send Bonus to All</h3>
                     <input id="bonus-amount" type="number" placeholder="Bonus Amount USD" class="w-full input-field mb-3">
                     <button id="send-bonus-btn" class="w-full bg-green-600 text-white py-3 rounded-xl font-bold">Distribute Bonus</button>
                 </div>
                 <div class="card-bg p-4 rounded-2xl">
-                    <h3 class="font-bold mb-3">Ad Network Status</h3>
-                    <div id="zone-stats" class="space-y-1 text-sm">
-                        <div class="flex justify-between"><span>AdsGram:</span><span id="adsgram-status">✅ Active</span></div>
-                        <div class="flex justify-between"><span>Monetag Zone 9730885:</span><span id="zone1-status">⏳</span></div>
-                        <div class="flex justify-between"><span>Monetag Zone 9500387:</span><span id="zone2-status">⏳</span></div>
-                        <div class="flex justify-between"><span>Monetag Zone 9715370:</span><span id="zone3-status">⏳</span></div>
-                        <div class="flex justify-between"><span>GigaPub:</span><span id="gigapub-status">✅ Active (10/day)</span></div>
+                    <h3 class="font-bold text-white mb-3">Ad Network Status</h3>
+                    <div class="space-y-1 text-sm">
+                        <div class="flex justify-between"><span class="text-gray-300">AdsGram:</span><span id="adsgram-status" class="text-green-400">✅ Active (5/day)</span></div>
                     </div>
                 </div>
                 <button id="send-manual-report" class="w-full bg-purple-600 text-white py-3 rounded-xl font-bold">📤 Send Report</button>
             </div>
         </main>
 
-        <!-- Bottom Navigation -->
-        <nav class="bottom-nav fixed bottom-0 left-0 right-0 max-w-md mx-auto grid grid-cols-4 items-center py-2 card-bg border-t border-gray-200">
+        <!-- Bottom Navigation (4 items: Home, Wallet, Jobs, Profile) -->
+        <nav class="bottom-nav fixed bottom-0 left-0 right-0 max-w-md mx-auto grid grid-cols-4 items-center py-2 card-bg border-t border-gray-700">
             <a href="#" class="nav-link active flex flex-col items-center" data-page="home-page"><i data-lucide="home" class="w-5 h-5"></i><span class="text-xs">Home</span></a>
             <a href="#" class="nav-link flex flex-col items-center" data-page="wallet-page"><i data-lucide="wallet" class="w-5 h-5"></i><span class="text-xs">Wallet</span></a>
             <a href="#" class="nav-link flex flex-col items-center" data-page="daily-jobs-page"><i data-lucide="briefcase" class="w-5 h-5"></i><span class="text-xs">Jobs</span></a>
-            <a href="#" class="nav-link flex flex-col items-center" data-page="sponsor-page"><i data-lucide="gift" class="w-5 h-5"></i><span class="text-xs">Sponsors</span></a>
+            <a href="#" class="nav-link flex flex-col items-center" data-page="profile-page"><i data-lucide="user" class="w-5 h-5"></i><span class="text-xs">Profile</span></a>
         </nav>
     </div>
     
-    <!-- Support Button -->
-    <div class="support-btn" onclick="openSupportPage()">
-        <i class="fas fa-headset"></i>
-    </div>
-
     <!-- Custom Alert -->
-    <div id="custom-alert" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 w-full max-w-sm text-center">
-            <p id="alert-message" class="mb-4 text-slate-800 dark:text-white"></p>
+    <div id="custom-alert" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
+        <div class="bg-gray-800 rounded-2xl p-6 w-full max-w-sm text-center border border-gray-700">
+            <p id="alert-message" class="mb-4 text-white"></p>
             <button id="alert-ok-btn" class="btn-accent px-6 py-2 rounded-xl">OK</button>
         </div>
     </div>
@@ -432,19 +261,14 @@
         // ==================== CONFIGURATION ====================
         const CONFIG = {
             app: {
-                name: "Smart Money Pro",
+                name: "Smart Income",
                 minWithdrawal: 20.00,
-                dailyAdLimit: { adsgram: 10, monetag: 10, gigapub: 10 },
+                dailyAdLimit: { adsgram: 5 },  // Changed to 5 per day
                 adReward: 0.50,
-                dailyJobReward: 0.50,
-                sponsorBonus: 0.20
+                dailyJobReward: 0.50
             },
             adsgram: { enabled: true, blockId: "int-29839", rewardAmount: 0.50 },
-            monetag: { enabled: true, zones: ['9730885', '9500387', '9715370'], rewardAmount: 0.50 },
-            gigapub: { enabled: true, rewardAmount: 0.50 },
-            social: { verificationLink: "https://t.me/Smart_money_pro_xbot" },
             bot: { adminChatId: "7793213912", reportChannelId: "-1003331749273" },
-            support: { telegraphUrl: "https://t.me/smartmoneypro_bot" },
             
             dailyJobLinks: {
                 job1: "https://omg10.com/4/9717825", job2: "https://omg10.com/4/9429975", job3: "https://omg10.com/4/9446627",
@@ -460,37 +284,27 @@
                 job16: "https://omg10.com/4/9446627", job17: "https://omg10.com/4/9429975",
                 job18: "https://omg10.com/4/9717825", job19: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp",
                 job20: "https://t.me/khelahobe07_bot?startapp"
-            },
-            
-            sponsorButtons: {
-                sponsor1: { name: "All Video Downloader", icon: "fas fa-download", link: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp", reward: 0.20 },
-                sponsor2: { name: "Movie Streaming", icon: "fas fa-film", link: "https://t.me/movieflex00bot?startapp", reward: 0.20 },
-                sponsor3: { name: "Money Power", icon: "fas fa-coins", link: "https://t.me/moneypowertgbot", reward: 0.20 },
-                sponsor4: { name: "Khela Hobe", icon: "fas fa-gamepad", link: "https://t.me/khelahobe07_bot?startapp", reward: 0.20 },
-                sponsor5: { name: "Instagram Promo", icon: "fab fa-instagram", link: "https://t.me/f785OSC7KPk4MGJl4abot?startapp", reward: 0.20 }
             }
         };
 
-        // ==================== VARIABLES & GLOBALS ====================
+        // ==================== VARIABLES ====================
         let currentUser = null, userData = null, currentJobTracking = null;
         let isAdsGramShowing = false, adsGramReady = false, AdController = null;
-        let isMonetagShowing = false, monetagReady = false, monetagCount = 0, currentZoneIndex = 0, adsGramCount = 0;
-        let gigapubCount = 0, isGigaPubShowing = false;
-        let dailyStats = { date: new Date().toISOString().split('T')[0], newUsers: 0, totalUsers: 0, adsGramWatched: 0, monetagWatched: 0, gigapubWatched: 0, jobsCompleted: 0, sponsorsCompleted: 0, totalWithdrawals: 0, totalWithdrawalAmount: 0 };
+        let adsGramCount = 0;
+        let dailyStats = { date: new Date().toISOString().split('T')[0], newUsers: 0, totalUsers: 0, adsGramWatched: 0, jobsCompleted: 0, totalWithdrawals: 0, totalWithdrawalAmount: 0 };
         
         const tg = window.Telegram.WebApp;
 
         // Helper Functions
         function showAlert(msg) { const a=document.getElementById('custom-alert'); document.getElementById('alert-message').innerText=msg; a.classList.remove('hidden'); document.getElementById('alert-ok-btn').onclick=()=>a.classList.add('hidden'); }
-        function openSupportPage() { tg.openLink(CONFIG.support.telegraphUrl); }
         function navigateTo(pageId) {
             document.querySelectorAll('.sub-page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId) && document.getElementById(pageId).classList.add('active');
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active', 'text-accent'));
-            document.querySelector(`.nav-link[data-page="${pageId}"]`) && document.querySelector(`.nav-link[data-page="${pageId}"]`).classList.add('active', 'text-accent');
+            const activeLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+            if(activeLink) activeLink.classList.add('active', 'text-accent');
             if(pageId === 'wallet-page') loadWithdrawalHistory();
             if(pageId === 'daily-jobs-page') { setupDailyJobs(); updateJobButtonStates(); }
-            if(pageId === 'sponsor-page') loadSponsorButtons();
             if(pageId === 'notifications-page') loadNotifications();
         }
 
@@ -504,93 +318,56 @@
         function loadDailyStats() { const today = new Date().toISOString().split('T')[0]; const saved = localStorage.getItem(`stats_${today}`); if(saved) dailyStats = JSON.parse(saved); else saveDailyStats(); }
         function saveDailyStats() { localStorage.setItem(`stats_${dailyStats.date}`, JSON.stringify(dailyStats)); }
         function incrementStat(stat) { dailyStats[stat]++; saveDailyStats(); }
+        
+        function updateTotalEarned() {
+            let total = userData.balance + (userData.totalWithdrawn || 0);
+            document.getElementById('total-earned') && (document.getElementById('total-earned').innerText = `$${total.toFixed(2)}`);
+        }
 
-        // Update UI
         function updateUI() {
             document.getElementById('coin-balance') && (document.getElementById('coin-balance').innerText = userData.balance.toFixed(2));
             document.getElementById('wallet-coin-balance') && (document.getElementById('wallet-coin-balance').innerText = userData.balance.toFixed(2));
             document.getElementById('profile-name') && (document.getElementById('profile-name').innerText = userData.name);
             document.getElementById('profile-username') && (document.getElementById('profile-username').innerText = '@' + userData.username);
             document.getElementById('profile-user-id') && (document.getElementById('profile-user-id').innerText = currentUser.id);
-            document.getElementById('gigapub-left-count') && (document.getElementById('gigapub-left-count').innerText = `${gigapubCount}/10`);
-            let totalWatched = (adsGramCount || 0) + (monetagCount || 0) + (gigapubCount || 0);
-            document.getElementById('total-ads-count') && (document.getElementById('total-ads-count').innerText = `${totalWatched}/30`);
+            const remaining = CONFIG.app.dailyAdLimit.adsgram - adsGramCount;
+            document.getElementById('adsgram-left-count') && (document.getElementById('adsgram-left-count').innerText = `${remaining >=0 ? remaining : 0}/${CONFIG.app.dailyAdLimit.adsgram}`);
+            let totalWatched = adsGramCount;
+            document.getElementById('total-ads-count') && (document.getElementById('total-ads-count').innerText = `${totalWatched}/${CONFIG.app.dailyAdLimit.adsgram}`);
+            updateTotalEarned();
         }
 
-        // Ad Networks
+        // AdsGram Ad Network
         function initializeAdsGram() {
             if (!CONFIG.adsgram.enabled) return;
             if (typeof window.Adsgram !== 'undefined') {
                 try {
                     AdController = window.Adsgram.init({ blockId: CONFIG.adsgram.blockId, debug: true });
-                    if (AdController && typeof AdController.show === 'function') { adsGramReady = true; document.getElementById('adsgram-status') && (document.getElementById('adsgram-status').innerHTML = '✅ Active'); }
+                    if (AdController && typeof AdController.show === 'function') { 
+                        adsGramReady = true; 
+                        document.getElementById('adsgram-status') && (document.getElementById('adsgram-status').innerHTML = '✅ Active (5/day)');
+                    }
                     else setTimeout(initializeAdsGram, 2000);
                 } catch(e) { setTimeout(initializeAdsGram, 2000); }
             } else { setTimeout(initializeAdsGram, 2000); }
         }
+        
         async function claimAdsGramReward() {
             if (!adsGramReady) { showAlert("AdsGram is loading..."); initializeAdsGram(); return; }
             if (isAdsGramShowing) return showAlert("Ad is playing...");
             const today = new Date().toISOString().split('T')[0];
-            if (adsGramCount >= CONFIG.app.dailyAdLimit.adsgram) return showAlert(`Daily limit reached (${adsGramCount}/10). Try tomorrow.`);
+            if (adsGramCount >= CONFIG.app.dailyAdLimit.adsgram) return showAlert(`Daily limit reached (${adsGramCount}/${CONFIG.app.dailyAdLimit.adsgram}). Try tomorrow.`);
             isAdsGramShowing = true; const btn = document.getElementById('ad-claim-btn'); if(btn) { btn.innerHTML = '⏳ Loading...'; btn.disabled = true; }
             try {
                 await AdController.show();
                 adsGramCount++; userData.adsGramCount = adsGramCount; userData.lastAdsGramDate = today;
-                userData.balance += CONFIG.app.adReward; dailyStats.adsGramWatched++;
+                userData.balance += CONFIG.app.adReward; 
+                if(!userData.totalWithdrawn) userData.totalWithdrawn = 0;
+                dailyStats.adsGramWatched++;
                 saveUserToStorage(userData); saveDailyStats(); updateUI();
-                showAlert(`🎉 Earned $${CONFIG.app.adReward.toFixed(2)}! (${adsGramCount}/10)`);
-            } catch(e) { showAlert("Ad error. Try again."); }
-            finally { isAdsGramShowing = false; if(btn) { btn.innerHTML = 'Watch ad AdsGram'; btn.disabled = false; } }
-        }
-
-        function initializeMonetag() {
-            if (!CONFIG.monetag.enabled) return;
-            let ready = 0;
-            CONFIG.monetag.zones.forEach(zone => { if (typeof window[`show_${zone}`] === 'function') ready++; });
-            if (ready >= 1) { monetagReady = true; updateZoneStatus(); }
-            else setTimeout(initializeMonetag, 2000);
-        }
-        function updateZoneStatus() {
-            document.getElementById('zone1-status') && (document.getElementById('zone1-status').innerHTML = typeof window.show_9730885 === 'function' ? '✅ Active' : '❌');
-            document.getElementById('zone2-status') && (document.getElementById('zone2-status').innerHTML = typeof window.show_9500387 === 'function' ? '✅ Active' : '❌');
-            document.getElementById('zone3-status') && (document.getElementById('zone3-status').innerHTML = typeof window.show_9715370 === 'function' ? '✅ Active' : '❌');
-        }
-        async function claimMonetagReward() {
-            if (!monetagReady) { showAlert("Monetag loading..."); return; }
-            if (isMonetagShowing) return showAlert("Ad playing...");
-            const today = new Date().toISOString().split('T')[0];
-            if (monetagCount >= CONFIG.app.dailyAdLimit.monetag) return showAlert(`Daily limit reached (${monetagCount}/10).`);
-            isMonetagShowing = true; const btn = document.getElementById('monetag-ad-btn'); if(btn) { btn.innerHTML = '⏳ Loading...'; btn.disabled = true; }
-            const currentZone = CONFIG.monetag.zones[currentZoneIndex];
-            try {
-                if (typeof window[`show_${currentZone}`] === 'function') {
-                    await window[`show_${currentZone}`]();
-                    monetagCount++; currentZoneIndex = (currentZoneIndex + 1) % CONFIG.monetag.zones.length;
-                    userData.monetagCount = monetagCount; userData.lastMonetagDate = today;
-                    userData.balance += CONFIG.app.adReward; dailyStats.monetagWatched++;
-                    saveUserToStorage(userData); saveDailyStats(); updateUI();
-                    showAlert(`🎉 Earned $${CONFIG.app.adReward.toFixed(2)}! (${monetagCount}/10)`);
-                } else throw new Error('Ad function missing');
-            } catch(e) { showAlert("Ad error."); }
-            finally { isMonetagShowing = false; if(btn) { btn.innerHTML = 'Watch on Monetag'; btn.disabled = false; } }
-        }
-
-        async function claimGigaPubReward() {
-            if (isGigaPubShowing) return showAlert("Ad is playing...");
-            const today = new Date().toISOString().split('T')[0];
-            if (gigapubCount >= CONFIG.app.dailyAdLimit.gigapub) return showAlert(`Daily limit reached (${gigapubCount}/10).`);
-            isGigaPubShowing = true; const btn = document.getElementById('gigapub-ad-btn'); if(btn) { btn.innerHTML = '⏳ Loading...'; btn.disabled = true; }
-            try {
-                if (typeof window.showGiga === 'function') {
-                    await window.showGiga();
-                    gigapubCount++; userData.gigapubCount = gigapubCount; userData.lastGigaPubDate = today;
-                    userData.balance += CONFIG.app.adReward; dailyStats.gigapubWatched++;
-                    saveUserToStorage(userData); saveDailyStats(); updateUI();
-                    showAlert(`🎉 Earned $${CONFIG.app.adReward.toFixed(2)}! (${gigapubCount}/10)`);
-                } else throw new Error("showGiga missing");
-            } catch(e) { showAlert("GigaPub error."); }
-            finally { isGigaPubShowing = false; if(btn) { btn.innerHTML = 'Watch on GigaPub'; btn.disabled = false; } }
+                showAlert(`🎉 Earned $${CONFIG.app.adReward.toFixed(2)}! (${adsGramCount}/${CONFIG.app.dailyAdLimit.adsgram})`);
+            } catch(e) { console.error(e); showAlert("Ad error. Please try again."); }
+            finally { isAdsGramShowing = false; if(btn) { btn.innerHTML = 'Watch AdsGram'; btn.disabled = false; } }
         }
 
         // Daily Jobs
@@ -599,10 +376,11 @@
             if(!container) return; container.innerHTML = '';
             for(let i=1;i<=20;i++) {
                 const link = CONFIG.dailyJobLinks[`job${i}`];
-                container.innerHTML += `<div class="card-bg p-3 rounded-xl flex justify-between items-center"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">${i}</div><div><h3 class="font-medium">Job ${i}</h3><p class="text-xs text-gray-500">$${CONFIG.app.dailyJobReward.toFixed(2)} earn</p></div></div><button id="job-btn-${i}" data-link="${link}" class="job-btn bg-green-600 text-white px-4 py-2 rounded-lg text-sm">Start</button></div>`;
+                container.innerHTML += `<div class="card-bg p-3 rounded-xl flex justify-between items-center"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">${i}</div><div><h3 class="font-medium text-white">Job ${i}</h3><p class="text-xs text-gray-400">$${CONFIG.app.dailyJobReward.toFixed(2)} earn</p></div></div><button id="job-btn-${i}" data-link="${link}" class="job-btn bg-green-600 text-white px-4 py-2 rounded-lg text-sm">Start</button></div>`;
             }
             for(let i=1;i<=20;i++) document.getElementById(`job-btn-${i}`)?.addEventListener('click',()=>handleJobClick(i));
         }
+        
         async function updateJobButtonStates() {
             if(!currentUser) return;
             const completed = loadDailyJobs(); const lastCompletions = {};
@@ -617,53 +395,31 @@
                 } else { btn.innerHTML = 'Start'; btn.className = 'job-btn bg-green-600 text-white px-4 py-2 rounded-lg text-sm'; btn.disabled = false; }
             }
         }
+        
         async function handleJobClick(jobId) {
             const btn = document.getElementById(`job-btn-${jobId}`); if(btn.disabled) return showAlert("Job on cooldown!");
             const link = btn.getAttribute('data-link'); if(!link) return;
             currentJobTracking = { jobId, startTime: Date.now(), link };
-            tg.openLink(link); showAlert("Watch ad, return after 15 seconds to claim reward!");
+            tg.openLink(link); showAlert("Complete the task, return after 15 seconds to claim reward!");
             setTimeout(() => { if(currentJobTracking?.jobId === jobId) completeJob(jobId); }, 15000);
         }
+        
         async function completeJob(jobId) {
             saveDailyJob({ userId: currentUser.id, jobId, completedAt: new Date().toISOString(), coinsEarned: CONFIG.app.dailyJobReward });
-            userData.balance += CONFIG.app.dailyJobReward; incrementStat('jobsCompleted');
+            userData.balance += CONFIG.app.dailyJobReward; 
+            if(!userData.totalWithdrawn) userData.totalWithdrawn = 0;
+            incrementStat('jobsCompleted');
             saveUserToStorage(userData); updateUI(); updateJobButtonStates();
             showAlert(`🎉 Earned $${CONFIG.app.dailyJobReward.toFixed(2)}!`); currentJobTracking = null;
         }
 
-        // Sponsors
-        function loadSponsorButtons() {
-            const container = document.getElementById('sponsor-container'); if(!container) return; container.innerHTML = '';
-            for(let i=1;i<=5;i++) {
-                const s = CONFIG.sponsorButtons[`sponsor${i}`]; const status = getSponsorStatus(i);
-                container.innerHTML += `<div class="sponsor-card ${status.completed?'completed':''}" id="sponsor-${i}"><div class="flex items-center gap-3 mb-3"><div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center"><i class="${s.icon} text-xl"></i></div><h3 class="font-bold">${s.name}</h3></div><div class="bg-yellow-400 text-gray-800 inline-block px-3 py-1 rounded-full text-sm mb-3">+$${s.reward.toFixed(2)}</div><button class="sponsor-btn" onclick="window.handleSponsorClick(${i})" ${status.completed||status.cooldown>0?'disabled':''}>${status.completed?'Completed':status.cooldown>0?formatTime(status.cooldown):'Join Now'}</button></div>`;
-            }
-        }
-        function getSponsorStatus(sponsorId) {
-            const data = localStorage.getItem(`sponsor_${currentUser?.id}_${sponsorId}`);
-            if(!data) return { completed: false, cooldown: 0 };
-            const d = JSON.parse(data); const elapsed = Date.now() - new Date(d.completedAt).getTime();
-            if(elapsed < 24*3600000) return { completed: true, cooldown: 24*3600000 - elapsed };
-            localStorage.removeItem(`sponsor_${currentUser.id}_${sponsorId}`); return { completed: false, cooldown: 0 };
-        }
-        function formatTime(ms) { const h=Math.floor(ms/3600000), m=Math.floor((ms%3600000)/60000); return `${h}h ${m}m`; }
-        window.handleSponsorClick = async function(sponsorId) {
-            const s = CONFIG.sponsorButtons[`sponsor${sponsorId}`]; tg.openLink(s.link);
-            showAlert("Wait 5 seconds for bonus...");
-            setTimeout(() => {
-                localStorage.setItem(`sponsor_${currentUser.id}_${sponsorId}`, JSON.stringify({ completedAt: new Date().toISOString() }));
-                userData.balance += CONFIG.app.sponsorBonus; incrementStat('sponsorsCompleted');
-                saveUserToStorage(userData); updateUI(); loadSponsorButtons();
-                showAlert(`🎉 Earned $${CONFIG.app.sponsorBonus.toFixed(2)} bonus!`);
-            }, 5000);
-        };
-
         // Withdrawals
         function loadWithdrawalHistory() {
             const w = loadWithdrawals(); const container = document.getElementById('withdrawal-history-list'); if(!container) return;
-            if(w.length===0) { container.innerHTML='<p class="text-center text-gray-500">No withdrawals</p>'; return; }
-            container.innerHTML = w.reverse().map(r => `<div class="card-bg p-3 rounded-xl flex justify-between"><div><p class="font-bold">$${r.amount} - ${r.method}</p><p class="text-xs text-gray-500">${new Date(r.requestedAt).toLocaleDateString()}</p></div><span class="text-${r.status==='pending'?'yellow-500':'green-500'}">${r.status}</span></div>`).join('');
+            if(w.length===0) { container.innerHTML='<p class="text-center text-gray-400">No withdrawals</p>'; return; }
+            container.innerHTML = w.reverse().map(r => `<div class="card-bg p-3 rounded-xl flex justify-between"><div><p class="font-bold text-white">$${r.amount} - ${r.method}</p><p class="text-xs text-gray-400">${new Date(r.requestedAt).toLocaleDateString()}</p></div><span class="text-${r.status==='pending'?'yellow-400':'green-400'}">${r.status}</span></div>`).join('');
         }
+        
         async function handleWithdrawal() {
             const amount = parseFloat(document.getElementById('withdraw-amount').value);
             const method = document.getElementById('withdraw-method').value;
@@ -672,10 +428,12 @@
             if(amount > userData.balance) return showAlert("Insufficient balance");
             if(!method || !paymentDetail) return showAlert("Fill all details");
             userData.balance -= amount;
+            userData.totalWithdrawn = (userData.totalWithdrawn || 0) + amount;
             saveWithdrawal({ userId: currentUser.id, amount, method, paymentDetails: paymentDetail, status: "pending", requestedAt: new Date().toISOString() });
             saveUserToStorage(userData); updateUI(); loadWithdrawalHistory();
             showAlert("Withdrawal request submitted!"); document.getElementById('withdraw-amount').value = ''; document.getElementById('withdraw-method').value = ''; document.getElementById('payment-details-container').innerHTML = '';
         }
+        
         function updateDynamicPaymentFields() {
             const m = document.getElementById('withdraw-method').value;
             const ph = m==='Bkash'?'Bkash Number': m==='Nagad'?'Nagad Number': m==='Rocket'?'Rocket Number':'Payment Details';
@@ -690,13 +448,15 @@
             for(let i=0;i<localStorage.length;i++) { const key=localStorage.key(i); if(key?.startsWith('user_')) { const u=JSON.parse(localStorage.getItem(key)); u.balance+=amount; localStorage.setItem(key,JSON.stringify(u)); } }
             userData = loadUserFromStorage(currentUser.id); updateUI(); showAlert(`$${amount} bonus sent to all users!`);
         }
+        
         async function sendReport() {
-            const msg = `📊 Smart Money Pro Report\n📅 ${new Date().toLocaleString()}\n👥 Total Users: ${dailyStats.totalUsers}\n💰 Today's Earnings: AdsGram:${dailyStats.adsGramWatched}, Monetag:${dailyStats.monetagWatched}, GigaPub:${dailyStats.gigapubWatched||0}\n💵 Total Withdrawals: $${dailyStats.totalWithdrawalAmount}`;
+            const msg = `📊 Smart Income Report\n📅 ${new Date().toLocaleString()}\n👥 Total Users: ${dailyStats.totalUsers}\n💰 Today's Earnings: AdsGram:${dailyStats.adsGramWatched}\n💵 Total Withdrawals: $${dailyStats.totalWithdrawalAmount}`;
             try { await fetch(`https://api.telegram.org/bot7793213912:AAFvPB1DZ8nrkUzXpwZPeXxplw6BNrirPxs/sendMessage`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ chat_id:CONFIG.bot.reportChannelId, text:msg }) }); } catch(e){}
         }
+        
         function loadNotifications() {
-            const n = [{title:"Payment Update!",msg:"Minimum withdrawal is $20.00"},{title:"Welcome!",msg:"Welcome to Smart Money Pro!"},{title:"Earn More!",msg:"Complete daily jobs to earn $0.50 each"}];
-            document.getElementById('notifications-list').innerHTML = n.map(not=>`<div class="card-bg p-4 rounded-xl"><h3 class="font-bold">${not.title}</h3><p class="text-sm text-gray-500">${not.msg}</p></div>`).join('');
+            const n = [{title:"Payment Update!",msg:"Minimum withdrawal is $20.00"},{title:"Welcome!",msg:"Welcome to Smart Income!"},{title:"Earn More!",msg:"Complete daily jobs to earn $0.50 each"}];
+            document.getElementById('notifications-list').innerHTML = n.map(not=>`<div class="card-bg p-4 rounded-xl"><h3 class="font-bold text-white">${not.title}</h3><p class="text-sm text-gray-400">${not.msg}</p></div>`).join('');
         }
 
         function initTelegramApp() {
@@ -707,34 +467,28 @@
             userData = loadUserFromStorage(currentUser.id);
             const today = new Date().toISOString().split('T')[0];
             if(!userData) {
-                userData = { uid: currentUser.id, name: currentUser.firstName || 'User', username: currentUser.username || 'N/A', balance: 0, adsGramCount: 0, monetagCount: 0, gigapubCount: 0, lastAdsGramDate: today, lastMonetagDate: today, lastGigaPubDate: today, sponsorCount: 0, createdAt: new Date().toISOString() };
+                userData = { uid: currentUser.id, name: currentUser.firstName || 'User', username: currentUser.username || 'N/A', balance: 0, adsGramCount: 0, lastAdsGramDate: today, totalWithdrawn: 0, createdAt: new Date().toISOString() };
                 incrementStat('newUsers'); saveUserToStorage(userData);
             } else {
                 if(userData.lastAdsGramDate !== today) { userData.adsGramCount = 0; userData.lastAdsGramDate = today; }
-                if(userData.lastMonetagDate !== today) { userData.monetagCount = 0; userData.lastMonetagDate = today; }
-                if(userData.lastGigaPubDate !== today) { userData.gigapubCount = 0; userData.lastGigaPubDate = today; }
                 saveUserToStorage(userData);
             }
-            adsGramCount = userData.adsGramCount || 0; monetagCount = userData.monetagCount || 0; gigapubCount = userData.gigapubCount || 0;
+            adsGramCount = userData.adsGramCount || 0;
             updateUI(); checkAdminAccess(); navigateTo('home-page');
         }
 
         function setupEventListeners() {
             document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',e=>{ e.preventDefault(); navigateTo(l.dataset.page); }));
             document.getElementById('ad-claim-btn')?.addEventListener('click', claimAdsGramReward);
-            document.getElementById('monetag-ad-btn')?.addEventListener('click', claimMonetagReward);
-            document.getElementById('gigapub-ad-btn')?.addEventListener('click', claimGigaPubReward);
             document.getElementById('withdraw-btn')?.addEventListener('click', handleWithdrawal);
             document.getElementById('home-withdraw-btn')?.addEventListener('click', ()=>navigateTo('wallet-page'));
             document.getElementById('withdraw-method')?.addEventListener('change', updateDynamicPaymentFields);
             document.getElementById('send-bonus-btn')?.addEventListener('click', sendBonusToAllUsers);
             document.getElementById('send-manual-report')?.addEventListener('click', ()=>{ sendReport(); showAlert("Report sent!"); });
-            document.getElementById('dark-mode-toggle')?.addEventListener('click', ()=>{ document.body.classList.toggle('dark-mode'); localStorage.setItem('theme', document.body.classList.contains('dark-mode')?'dark':'light'); });
-            if(localStorage.getItem('theme')==='dark') document.body.classList.add('dark-mode');
         }
 
-        window.onload = () => { lucide.createIcons(); setupEventListeners(); initTelegramApp(); loadDailyStats(); initializeAdsGram(); initializeMonetag(); setInterval(updateJobButtonStates, 60000); };
-        window.navigateTo = navigateTo; window.showAlert = showAlert; window.openSupportPage = openSupportPage;
+        window.onload = () => { lucide.createIcons(); setupEventListeners(); initTelegramApp(); loadDailyStats(); initializeAdsGram(); setInterval(updateJobButtonStates, 60000); };
+        window.navigateTo = navigateTo; window.showAlert = showAlert;
     </script>
 </body>
 </html>
