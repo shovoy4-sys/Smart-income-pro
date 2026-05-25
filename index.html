@@ -1,494 +1,383 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
+
+<script>
+window.onload = function() {
+    window.Adsgram.init({ blockId: "int-29880" }).show();
+}
+</script>
+
+<script type="text/javascript">
+  setTimeout(function() {
+    window.location.href = "https://t.me/aYm7CbBVsOmxjxDU1bot?startapp"; // আপনার লিঙ্ক দিন
+  }, 8000); // ১০ সেকেন্ড (১০,০০০ মিলিসেকেন্ড)
+</script>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Smart Income - Earn in USD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>🎬 CINEMA PREMIUM • 18+ STREAMING</title>
     
-    <!-- Telegram WebApp -->
+    <!-- Telegram WebApp & Adsgram Script -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
     
-    <!-- AdsGram Ad Script - zone ID: task-27659 -->
-    <script src="https://cdn.adsgram.ai/js/adsgram.js"></script> 
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> 
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #1e293b; 
-            color: #f1f5f9; 
-            padding-bottom: 70px;
-        }
-        /* Dark mode only - forced */
-        .card-bg { 
-            background-color: #334155; 
-            border: 1px solid #475569;
-            border-radius: 16px;
-        }
-        .text-accent { color: #f59e0b; }
-        .btn-accent { 
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            color: white; 
-            font-weight: bold;
-            transition: all 0.2s ease;
-        }
-        .btn-accent:active { transform: scale(0.96); }
-        .input-field { 
-            background-color: #475569; 
-            border: 1px solid #64748b; 
-            border-radius: 12px;
-            padding: 12px;
-            color: white;
-        }
-        .input-field::placeholder { color: #94a3b8; }
-        .input-field:focus { outline: none; border-color: #f59e0b; }
-        .main-page { display: none; }
-        .main-page.active { display: flex; animation: fadeIn 0.3s ease; }
-        .sub-page { display: none; }
-        .sub-page.active { display: block; animation: fadeIn 0.3s ease; }
-        .bottom-nav a.active { color: #f59e0b; }
-        .bottom-nav { background-color: #334155; border-color: #475569; }
-        .notification-dot {
-            position: absolute; top: -2px; right: -2px; width: 10px; height: 10px;
-            background-color: #ef4444; border-radius: 50%; display: none;
-        }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .job-btn:active { transform: scale(0.96); }
-        .ad-card {
-            transition: all 0.2s ease;
-        }
-        .ad-card:active { transform: scale(0.98); }
+        body { background: #0a0a0f; font-family: 'Inter', system-ui, sans-serif; color: #f0f0f0; min-height: 100vh; }
+        .app-container { max-width: 560px; margin: 0 auto; background: radial-gradient(circle at 10% 20%, #12101e, #03020a); min-height: 100vh; position: relative; box-shadow: 0 0 60px rgba(0,0,0,0.6); }
+
+        /* Loading Overlay - only shown for ads */
+        .loading-overlay { position: fixed; inset: 0; background: #03010cee; backdrop-filter: blur(25px); z-index: 9999; display: none; align-items: center; justify-content: center; flex-direction: column; }
+        .loading-overlay.show { display: flex; }
+        .film-spinner { width: 80px; height: 80px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23ff5982" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 4v16"/><path d="M16 4v16"/><path d="M2 8h4"/><path d="M2 12h4"/><path d="M2 16h4"/><path d="M18 8h4"/><path d="M18 12h4"/><path d="M18 16h4"/></svg>') no-repeat center; background-size: contain; animation: spinReel 1s infinite; }
+        @keyframes spinReel { to { transform: rotate(360deg); } }
+        .loading-text { color: #ff91b5; margin-top: 20px; font-weight: 700; background: rgba(0,0,0,0.6); padding: 8px 24px; border-radius: 60px; }
+
+        /* Main UI - directly visible, no age gate */
+        .stream-header { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px 14px; background: rgba(8, 6, 18, 0.55); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255, 90, 130, 0.6); position: sticky; top: 0; z-index: 99; }
+        .logo-premium { font-weight: 900; font-size: 22px; background: linear-gradient(135deg, #FFE3B0, #FF9770, #FF5E8E); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .badge-4k { background: rgba(0,0,0,0.7); border-radius: 40px; padding: 6px 20px; font-size: 12px; font-weight: 800; border: 1px solid #ff809f; }
+        
+        .featured-movie { margin: 20px 20px 28px; border-radius: 48px; overflow: hidden; background: #141128; border: 1px solid rgba(255, 110, 140, 0.8); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.6); }
+        .featured-img { position: relative; height: 250px; overflow: hidden; }
+        .featured-img img { width: 100%; height: 100%; object-fit: cover; filter: blur(16px) brightness(0.7); }
+        .featured-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.2) 70%); display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .play-circle { font-size: 80px; filter: drop-shadow(0 0 22px #ff3366); background: rgba(0,0,0,0.4); border-radius: 100px; padding: 12px; backdrop-filter: blur(12px); }
+        .featured-title { font-size: 30px; font-weight: 900; background: linear-gradient(135deg, #FFF3E0, #FFC0D0); -webkit-background-clip: text; background-clip: text; color: transparent; margin-top: 12px; }
+        .movie-meta { display: flex; justify-content: space-between; padding: 14px 20px; background: rgba(8, 5, 20, 0.7); font-weight: 700; font-size: 13px; }
+        
+        .cat-scroll { display: flex; gap: 14px; overflow-x: auto; padding: 8px 20px 20px; scrollbar-width: thin; }
+        .cat-item { background: rgba(20, 18, 40, 0.8); backdrop-filter: blur(12px); border-radius: 60px; padding: 10px 26px; font-weight: 800; font-size: 14px; white-space: nowrap; border: 1px solid #ff7a9e; cursor: pointer; transition: 0.15s; }
+        .cat-item:active { transform: scale(0.96); }
+        .section-row { display: flex; justify-content: space-between; align-items: baseline; margin: 32px 20px 16px; }
+        .section-row h3 { font-size: 22px; font-weight: 800; border-left: 6px solid #ff5f8e; padding-left: 14px; }
+        .see-all { font-size: 13px; color: #ffb7ce; cursor: pointer; background: #1e1a2e60; padding: 6px 14px; border-radius: 40px; }
+        .movie-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 0 20px; }
+        .movie-card { background: rgba(22, 20, 38, 0.7); backdrop-filter: blur(14px); border-radius: 32px; overflow: hidden; border: 1px solid rgba(255, 110, 150, 0.5); cursor: pointer; transition: 0.2s; }
+        .movie-card:active { transform: scale(0.97); }
+        .card-media { position: relative; height: 145px; }
+        .card-media img { width: 100%; height: 100%; object-fit: cover; filter: blur(12px); }
+        .card-badge { position: absolute; top: 12px; right: 12px; background: linear-gradient(145deg, #ff386a, #ff8c4a); padding: 4px 14px; border-radius: 40px; font-size: 10px; font-weight: 800; }
+        .card-info { padding: 14px 12px 12px; }
+        .card-title { font-weight: 800; display: flex; justify-content: space-between; font-size: 15px; }
+        .card-stats { display: flex; justify-content: space-between; margin-top: 12px; font-size: 11px; font-weight: 700; color: #d6c2e6; }
+        
+        .watch-now-btn { background: linear-gradient(95deg, #ff2e6a, #ffaa4a); border: none; border-radius: 60px; padding: 10px 0; margin-top: 14px; font-weight: 800; font-size: 14px; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.4); transition: 0.1s; }
+        .watch-now-btn:active { transform: scale(0.96); }
+        
+        .vip-pass { background: linear-gradient(115deg, #1f1a38, #100c24); margin: 32px 20px; border-radius: 56px; padding: 28px 20px; border: 2px solid #ffc27a; text-align: center; cursor: pointer; }
+        .pass-glow { font-size: 32px; font-weight: 900; background: linear-gradient(135deg, #FEE7A0, #FFAE6F, #FF738F); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .live-row { display: flex; gap: 20px; margin: 0 20px 30px; }
+        .live-card { flex: 1; background: #15122d; border-radius: 40px; padding: 14px; border: 1px solid #ff7b9d; cursor: pointer; }
+        .live-preview { width: 100%; height: 115px; object-fit: cover; border-radius: 32px; filter: blur(10px); }
+        .live-badge-red { background: #e6224b; display: inline-block; padding: 4px 16px; border-radius: 60px; font-size: 11px; font-weight: 800; margin-top: 10px; }
+        .hot-links-cinema { display: flex; flex-wrap: wrap; gap: 14px; margin: 30px 20px 20px; }
+        .hot-cinema { flex: 1 1 42%; background: #181431; padding: 16px 10px; border-radius: 60px; text-align: center; font-weight: 800; border-bottom: 4px solid #ff6b90; cursor: pointer; }
+        .double-special { display: flex; gap: 18px; margin: 20px 20px 35px; }
+        .special-offer { flex: 1; background: #120e2b; border-radius: 48px; padding: 20px 12px; text-align: center; border: 1px solid #ff89ab; cursor: pointer; }
+        .footer-cinema { text-align: center; padding: 30px 20px; background: #05030f; border-top: 2px solid #ff4770; font-size: 11px; }
+        
+        /* Floating Back Button */
+        .back-home-btn { position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #1e1a3a, #28204f); border-radius: 60px; padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 14px; z-index: 1000; cursor: pointer; border: 1px solid #ff7b9e; box-shadow: 0 4px 15px rgba(0,0,0,0.5); backdrop-filter: blur(8px); transition: 0.2s; }
+        .back-home-btn:active { transform: scale(0.95); }
+        .back-home-btn span { font-size: 20px; }
+        
         /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #1e293b; }
-        ::-webkit-scrollbar-thumb { background: #f59e0b; border-radius: 4px; }
-        header {
-            background-color: #1e293b;
-            border-bottom: 1px solid #334155;
-        }
-        select option { background-color: #334155; color: white; }
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: #1a162e; }
+        ::-webkit-scrollbar-thumb { background: #ff6085; border-radius: 10px; }
     </style>
 </head>
-<body class="max-w-md mx-auto">
-
-    <!-- Loader -->
-    <div id="loader" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-orange-500"></div>
+<body>
+<div class="app-container">
+    <!-- Loading Overlay (only for ad breaks) -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="film-spinner"></div>
+        <div class="loading-text">✨ LOADING SECURE STREAM • AD</div>
     </div>
 
-    <!-- Main Container -->
-    <div id="app-container" class="min-h-screen flex flex-col main-page active">
-        <!-- Header -->
-        <header class="flex items-center justify-between p-4 sticky top-0 z-10 border-b border-gray-700">
-            <h1 class="text-xl font-bold text-white">💰 Smart Income</h1>
-            <div class="flex items-center gap-4">
-                <div id="notification-bell" class="relative cursor-pointer">
-                    <i data-lucide="bell" class="w-5 h-5 text-white"></i>
-                    <div id="notification-dot" class="notification-dot"></div>
-                </div>
-                <i data-lucide="user" class="w-5 h-5 cursor-pointer text-white" onclick="navigateTo('profile-page')"></i>
-            </div>
-        </header>
-
-        <main class="flex-1">
-            <!-- Home Page -->
-            <div id="home-page" class="p-4 space-y-5 sub-page active">
-                <!-- Balance Card -->
-                <div class="card-bg p-5 rounded-2xl flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-300 text-sm">Your Balance</p>
-                        <p class="text-3xl font-bold text-white">$<span id="coin-balance">0.00</span></p>
-                    </div>
-                    <button id="home-withdraw-btn" class="bg-orange-500 text-white font-semibold px-5 py-2 rounded-xl">Withdraw</button>
-                </div>
-
-                <!-- Tasks Section -->
-                <section>
-                    <div class="flex justify-between items-center mb-3">
-                        <div>
-                            <h2 class="text-lg font-bold text-white">Daily Tasks</h2>
-                            <p class="text-xs text-gray-400">Complete tasks & earn USD</p>
-                        </div>
-                        <p class="text-xs text-gray-400">Today's limit: <span id="total-ads-count">0/5</span></p>
-                    </div>
-                    
-                    <div class="space-y-3">
-                        <!-- AdsGram Ad Button (Only Ad Network - 5 per day) -->
-                        <div class="bg-gradient-to-r from-orange-500 to-red-500 p-4 rounded-xl text-white shadow-lg ad-card">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-3xl">🎬</span>
-                                    <div>
-                                        <h3 class="font-bold">Watch ad - AdsGram</h3>
-                                        <p class="text-xs">Earn $0.50 per ad</p>
-                                        <p class="text-xs opacity-80">Remaining: <span id="adsgram-left-count">0/5</span></p>
-                                    </div>
-                                </div>
-                                <button id="ad-claim-btn" class="bg-white text-orange-600 font-bold px-5 py-2 rounded-xl text-sm shadow-md transition transform active:scale-95">
-                                    Watch AdsGram
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <!-- Daily Jobs Card -->
-                        <div class="bg-gradient-to-r from-blue-600 to-cyan-600 p-4 rounded-xl text-white shadow-lg">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-3">
-                                    <span class="text-3xl">💼</span>
-                                    <div>
-                                        <h3 class="font-bold">Daily Jobs</h3>
-                                        <p class="text-xs">20 jobs - $0.50 each</p>
-                                        <p class="text-xs opacity-80">Complete & earn instantly</p>
-                                    </div>
-                                </div>
-                                <button class="bg-white text-blue-600 font-bold px-5 py-2 rounded-xl text-sm shadow-md" onclick="navigateTo('daily-jobs-page')">Start</button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <!-- Wallet Page -->
-            <div id="wallet-page" class="p-4 space-y-5 sub-page">
-                <h2 class="text-xl font-bold text-center text-white">💰 My Wallet</h2>
-                <div class="card-bg p-5 rounded-2xl">
-                    <h3 class="font-bold text-white mb-3">Withdraw Funds</h3>
-                    <p class="text-sm text-gray-300">Current Balance: <span class="font-bold text-orange-400">$<span id="wallet-coin-balance">0.00</span></span></p>
-                    <p class="text-sm text-gray-300 mb-3">Min Withdrawal: <span id="min-withdrawal-info">20.00</span> USD</p>
-                    <input id="withdraw-amount" type="number" placeholder="Enter amount USD" class="w-full input-field mb-3">
-                    <select id="withdraw-method" class="w-full input-field mb-3">
-                        <option value="">Select Method</option>
-                        <option value="Bkash">Bkash</option>
-                        <option value="Nagad">Nagad</option>
-                        <option value="Rocket">Rocket</option>
-                    </select>
-                    <div id="payment-details-container"></div>
-                    <button id="withdraw-btn" class="w-full btn-accent py-3 rounded-xl mt-2">Request Withdrawal</button>
-                </div>
-                <div>
-                    <h3 class="font-bold text-white mb-3">Withdrawal History</h3>
-                    <div id="withdrawal-history-list" class="space-y-2"></div>
-                </div>
-            </div>
-
-            <!-- Profile Page -->
-            <div id="profile-page" class="p-4 space-y-5 sub-page">
-                <h2 class="text-xl font-bold text-center text-white">Profile</h2>
-                <div class="flex flex-col items-center">
-                    <img id="profile-photo" src="https://placehold.co/100x100/f59e0b/white?text=U" class="rounded-full w-24 h-24 mb-2">
-                    <div class="flex items-center">
-                        <h2 id="profile-name" class="text-xl font-bold text-white">User</h2>
-                    </div>
-                    <p id="profile-username" class="text-gray-400">@username</p>
-                </div>
-                <div class="card-bg p-4 rounded-2xl">
-                    <h3 class="font-bold text-white mb-2">Account Info</h3>
-                    <div class="flex justify-between"><span class="text-gray-300">Joined via:</span><span class="text-white">Telegram</span></div>
-                    <div class="flex justify-between"><span class="text-gray-300">User ID:</span><span id="profile-user-id" class="text-white">-</span></div>
-                    <div class="flex justify-between mt-2"><span class="text-gray-300">Total Earned:</span><span id="total-earned" class="font-bold text-green-400">$0.00</span></div>
-                </div>
-                <div id="admin-access" class="hidden">
-                    <button onclick="navigateTo('admin-panel')" class="w-full bg-purple-600 text-white py-3 rounded-xl font-bold">Admin Panel</button>
-                </div>
-            </div>
-            
-            <!-- Notifications Page -->
-            <div id="notifications-page" class="p-4 space-y-4 sub-page">
-                <h2 class="text-xl font-bold text-center text-white">📬 Inbox</h2>
-                <div id="notifications-list" class="space-y-3"></div>
-            </div>
-
-            <!-- Daily Jobs Page -->
-            <div id="daily-jobs-page" class="p-4 space-y-4 sub-page">
-                <div class="flex items-center gap-3 mb-4">
-                    <button onclick="navigateTo('home-page')" class="text-gray-300"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
-                    <h2 class="text-xl font-bold text-white">Daily Jobs</h2>
-                </div>
-                <div class="card-bg p-4 text-center rounded-2xl">
-                    <p class="text-gray-300 text-sm">Click on any job, watch ad for 15 seconds and earn $0.50!</p>
-                    <div class="flex justify-center gap-4 mt-2 text-xs">
-                        <span class="text-green-400">● Available</span>
-                        <span class="text-red-400">● Cooldown (8 hours)</span>
-                    </div>
-                </div>
-                <div id="daily-jobs-container" class="space-y-3"></div>
-            </div>
-
-            <!-- Admin Panel -->
-            <div id="admin-panel" class="p-4 space-y-5 sub-page">
-                <div class="flex items-center gap-3 mb-4">
-                    <button onclick="navigateTo('profile-page')" class="text-gray-300"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
-                    <h2 class="text-xl font-bold text-white">Admin Panel</h2>
-                </div>
-                <div class="card-bg p-4 rounded-2xl">
-                    <h3 class="font-bold text-white mb-3">Send Bonus to All</h3>
-                    <input id="bonus-amount" type="number" placeholder="Bonus Amount USD" class="w-full input-field mb-3">
-                    <button id="send-bonus-btn" class="w-full bg-green-600 text-white py-3 rounded-xl font-bold">Distribute Bonus</button>
-                </div>
-                <div class="card-bg p-4 rounded-2xl">
-                    <h3 class="font-bold text-white mb-3">Ad Network Status</h3>
-                    <div class="space-y-1 text-sm">
-                        <div class="flex justify-between"><span class="text-gray-300">AdsGram:</span><span id="adsgram-status" class="text-green-400">✅ Active (5/day)</span></div>
-                    </div>
-                </div>
-                <button id="send-manual-report" class="w-full bg-purple-600 text-white py-3 rounded-xl font-bold">📤 Send Report</button>
-            </div>
-        </main>
-
-        <!-- Bottom Navigation (4 items: Home, Wallet, Jobs, Profile) -->
-        <nav class="bottom-nav fixed bottom-0 left-0 right-0 max-w-md mx-auto grid grid-cols-4 items-center py-2 card-bg border-t border-gray-700">
-            <a href="#" class="nav-link active flex flex-col items-center" data-page="home-page"><i data-lucide="home" class="w-5 h-5"></i><span class="text-xs">Home</span></a>
-            <a href="#" class="nav-link flex flex-col items-center" data-page="wallet-page"><i data-lucide="wallet" class="w-5 h-5"></i><span class="text-xs">Wallet</span></a>
-            <a href="#" class="nav-link flex flex-col items-center" data-page="daily-jobs-page"><i data-lucide="briefcase" class="w-5 h-5"></i><span class="text-xs">Jobs</span></a>
-            <a href="#" class="nav-link flex flex-col items-center" data-page="profile-page"><i data-lucide="user" class="w-5 h-5"></i><span class="text-xs">Profile</span></a>
-        </nav>
-    </div>
-    
-    <!-- Custom Alert -->
-    <div id="custom-alert" class="hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4">
-        <div class="bg-gray-800 rounded-2xl p-6 w-full max-w-sm text-center border border-gray-700">
-            <p id="alert-message" class="mb-4 text-white"></p>
-            <button id="alert-ok-btn" class="btn-accent px-6 py-2 rounded-xl">OK</button>
+    <!-- Main Content - Direct Access, No Verification Button -->
+    <div id="mainContent">
+        <div class="stream-header">
+            <div class="logo-premium">🎬 CINEMA<span style="color:#ff708f;"> PREMIUM</span></div>
+            <div class="badge-4k">4K ULTRA HD</div>
         </div>
+
+        <div class="featured-movie" id="heroBlur">
+            <div class="featured-img">
+                <img src="https://i.ibb.co.com/Xk6JGmP6/dark-theme-of-video-player-window-in-a-night-mode.jpg" alt="featured" onerror="this.src='https://placehold.co/600x400/1e1a2e/ff88aa?text=PREMIERE'">
+                <div class="featured-overlay">
+                    <div class="play-circle">▶</div>
+                    <div class="featured-title">PREMIERE NIGHT</div>
+                </div>
+                <div class="movie-meta">
+                    <span>🔥 <span id="heroViews">৪.২</span>M views</span>
+                    <span>⭐ <span id="heroLikes">৯৩২</span>K</span>
+                    <span>💬 <span id="heroComments">২৭৫</span>K</span>
+                </div>
+            </div>
+            <button class="watch-now-btn" data-link="https://t.me/khelahobe07_bot?startapp"><span>🎬</span> এখনই দেখুন (Watch Now)</button>
+        </div>
+
+        <div class="cat-scroll">
+            <div class="cat-item" data-link="https://t.me/khelahobe07_bot?startapp">🎬 ACTION</div>
+            <div class="cat-item" data-link="https://t.me/khelahobe07_bot?startapp">🔥 BOLLYWOOD</div>
+            <div class="cat-item" data-link="https://t.me/khelahobe07_bot?startapp">💋 ROMANCE 18+</div>
+            <div class="cat-item" data-link="https://t.me/khelahobe07_bot?startapp">🎥 EXCLUSIVE</div>
+            <div class="cat-item" data-link="https://t.me/khelahobe07_bot?startapp">🌙 WEBCAM</div>
+            <div class="cat-item" data-link="https://t.me/khelahobe07_bot?startapp">📀 4K COLLECTION</div>
+        </div>
+
+        <div class="section-row"><h3>⚡ TRENDING NOW</h3><span class="see-all" id="viewAllTrending" data-link="https://t.me/khelahobe07_bot?startapp">ALL MOVIES ›</span></div>
+        <div class="movie-grid" id="trendingGrid">
+            <div class="movie-card" data-link="https://omg10.com/4/9717825">
+                <div class="card-media"><img src="https://i.imgur.com/5vzBNBz.jpeg"><span class="card-badge">HDR</span></div>
+                <div class="card-info">
+                    <div class="card-title"><span>🔞 College Diaries</span><span>★ <span class="rating1">4.8</span></span></div>
+                    <div class="card-stats"><span>👁 <span class="view1">৭৮৯</span>K</span><span>❤️ <span class="like1">৫৬</span>K</span><span>💬 <span class="comment1">২৩</span>K</span></div>
+                    <button class="watch-now-btn" data-link="https://omg10.com/4/9717825"><span>🎬</span> এখনই দেখুন</button>
+                </div>
+            </div>
+            <div class="movie-card" data-link="https://omg10.com/4/9429975">
+                <div class="card-media"><img src="https://i.imgur.com/ZnFW6E2.jpeg"><span class="card-badge">NEW</span></div>
+                <div class="card-info">
+                    <div class="card-title"><span>💋 Wedding Night</span><span>★ <span class="rating2">4.9</span></span></div>
+                    <div class="card-stats"><span>👁 <span class="view2">১.২</span>M</span><span>❤️ <span class="like2">৮৯</span>K</span><span>💬 <span class="comment2">৪৫</span>K</span></div>
+                    <button class="watch-now-btn" data-link="https://omg10.com/4/9429975"><span>🎬</span> এখনই দেখুন</button>
+                </div>
+            </div>
+            <div class="movie-card" data-link="https://omg10.com/4/9717825">
+                <div class="card-media"><img src="https://i.imgur.com/UiW5o8Z.jpeg"><span class="card-badge">VIRAL</span></div>
+                <div class="card-info">
+                    <div class="card-title"><span>👄 Hotel Room</span><span>★ <span class="rating3">4.7</span></span></div>
+                    <div class="card-stats"><span>👁 <span class="view3">৫৬৫</span>K</span><span>❤️ <span class="like3">৪২</span>K</span><span>💬 <span class="comment3">১৮</span>K</span></div>
+                    <button class="watch-now-btn" data-link="https://omg10.com/4/9717825"><span>🎬</span> এখনই দেখুন</button>
+                </div>
+            </div>
+            <div class="movie-card" data-link="https://omg10.com/4/9429975">
+                <div class="card-media"><img src="https://i.imgur.com/R0XQv0T.jpeg"><span class="card-badge">EXCLUSIVE</span></div>
+                <div class="card-info">
+                    <div class="card-title"><span>🎭 Secretary Affair</span><span>★ <span class="rating4">4.9</span></span></div>
+                    <div class="card-stats"><span>👁 <span class="view4">৯৯২</span>K</span><span>❤️ <span class="like4">৭৩</span>K</span><span>💬 <span class="comment4">৩১</span>K</span></div>
+                    <button class="watch-now-btn" data-link="https://omg10.com/4/9429975"><span>🎬</span> এখনই দেখুন</button>
+                </div>
+            </div>
+            <div class="movie-card" data-link="https://omg10.com/4/9717825">
+                <div class="card-media"><img src="https://i.imgur.com/sG7QqGh.jpeg"><span class="card-badge">HOT</span></div>
+                <div class="card-info">
+                    <div class="card-title"><span>💦 Massage Center</span><span>★ <span class="rating5">4.6</span></span></div>
+                    <div class="card-stats"><span>👁 <span class="view5">৩৪৫</span>K</span><span>❤️ <span class="like5">২৮</span>K</span><span>💬 <span class="comment5">১২</span>K</span></div>
+                    <button class="watch-now-btn" data-link="https://omg10.com/4/9717825"><span>🎬</span> এখনই দেখুন</button>
+                </div>
+            </div>
+            <div class="movie-card" data-link="https://omg10.com/4/9429975">
+                <div class="card-media"><img src="https://i.imgur.com/KLh6VhO.jpeg"><span class="card-badge">ULTRA 4K</span></div>
+                <div class="card-info">
+                    <div class="card-title"><span>👙 Hostel Nights</span><span>★ <span class="rating6">4.8</span></span></div>
+                    <div class="card-stats"><span>👁 <span class="view6">৮৮২</span>K</span><span>❤️ <span class="like6">৬৪</span>K</span><span>💬 <span class="comment6">২৭</span>K</span></div>
+                    <button class="watch-now-btn" data-link="https://omg10.com/4/9429975"><span>🎬</span> এখনই দেখুন</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="vip-pass" data-link="https://omg10.com/4/9717825">
+            <span style="background:#f5b64240; padding:6px 18px; border-radius:40px; font-size:12px;">⭐ LIMITED PASS</span>
+            <div class="pass-glow" style="margin:16px 0;">UNLIMITED CINEMA PASS</div>
+            <div style="background: #00000070; border-radius: 48px; padding:12px; font-weight:800;">🚀 80% OFF — JOIN TODAY</div>
+            <p style="margin-top:14px; font-size:12px;" id="vipViewer">১৫.৮K members joined</p>
+            <button class="watch-now-btn" data-link="https://omg10.com/4/9717825"><span>⭐</span> এখনই দেখুন</button>
+        </div>
+
+        <div class="section-row"><h3>🔴 LIVE NOW</h3><span class="see-all" id="viewAllLive" data-link="https://t.me/khelahobe07_bot?startapp">ALL STREAMS ›</span></div>
+        <div class="live-row">
+            <div class="live-card" data-link="https://omg10.com/4/9429975">
+                <img class="live-preview" src="https://i.imgur.com/jUvXU8r.jpeg">
+                <div class="live-badge-red">🔴 LIVE</div>
+                <p style="font-weight:800; margin-top:10px;">Hot Jessica</p>
+                <div><span id="live1Viewers">২.৮K watching</span> ❤️ <span id="live1Likes">১২.৪</span>K</div>
+                <button class="watch-now-btn" data-link="https://omg10.com/4/9429975"><span>📡</span> এখনই দেখুন</button>
+            </div>
+            <div class="live-card" data-link="https://omg10.com/4/9717825">
+                <img class="live-preview" src="https://i.imgur.com/JH1cVWv.jpeg">
+                <div class="live-badge-red">🔴 LIVE</div>
+                <p style="font-weight:800; margin-top:10px;">Priya X</p>
+                <div><span id="live2Viewers">১.৯K watching</span> ❤️ <span id="live2Likes">৮.৭</span>K</div>
+                <button class="watch-now-btn" data-link="https://omg10.com/4/9717825"><span>📡</span> এখনই দেখুন</button>
+            </div>
+        </div>
+
+        <div class="hot-links-cinema">
+            <div class="hot-cinema" data-link="https://omg10.com/4/9717825">🎞️ PRIVATE COLLECTION</div>
+            <div class="hot-cinema" data-link="https://omg10.com/4/9429975">📹 REQUEST MOVIE</div>
+            <div class="hot-cinema" data-link="https://omg10.com/4/9717825">🎧 AUDIO CLIPS</div>
+            <div class="hot-cinema" data-link="https://omg10.com/4/9429975">📸 EXCLUSIVE PHOTOS</div>
+            <div class="hot-cinema" data-link="https://omg10.com/4/9717825">🎮 INTERACTIVE</div>
+            <div class="hot-cinema" data-link="https://omg10.com/4/9429975">💎 VIP GROUP</div>
+        </div>
+
+        <div class="double-special">
+            <div class="special-offer" data-link="https://omg10.com/4/9429975"><span style="font-size:34px;">🎁</span><h3>FREE TRIAL</h3><span id="trialTimer">24h left</span><button class="watch-now-btn" data-link="https://omg10.com/4/9429975" style="margin-top:12px;"><span>🎁</span> এখনই দেখুন</button></div>
+            <div class="special-offer" data-link="https://omg10.com/4/9717825"><span style="font-size:34px;">💘</span><h3>MATCH & DATE</h3><span id="matchCount">১২৩ online</span><button class="watch-now-btn" data-link="https://omg10.com/4/9717825" style="margin-top:12px;"><span>💘</span> এখনই দেখুন</button></div>
+        </div>
+        <div class="footer-cinema">🎬 18+ CINEMA PREMIUM • 4K STREAMING<br><span style="color:#ff9cbb;">UNLIMITED ACCESS | ULTRA HD</span></div>
     </div>
 
-    <script>
-        // ==================== CONFIGURATION ====================
-        const CONFIG = {
-            app: {
-                name: "Smart Income",
-                minWithdrawal: 20.00,
-                dailyAdLimit: { adsgram: 5 },  // Changed to 5 per day
-                adReward: 0.50,
-                dailyJobReward: 0.50
-            },
-            adsgram: { enabled: true, blockId: "int-29839", rewardAmount: 0.50 },
-            bot: { adminChatId: "7793213912", reportChannelId: "-1003331749273" },
-            
-            dailyJobLinks: {
-                job1: "https://omg10.com/4/9717825", job2: "https://omg10.com/4/9429975", job3: "https://omg10.com/4/9446627",
-                job4: "https://encouragementglutton.com/vc1xew7t?key=9a97915b9241db71d8f53e974a75a975",
-                job5: "https://www.effectivegatecpm.com/hjt54qy2f?key=850e1a1f668e2f8cf8fbc7662317181b",
-                job6: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp", job7: "https://omg10.com/4/10338067",
-                job8: "https://encouragementglutton.com/uaw9tkid6b?key=c49281ab14f9eb6a872d63173ea7bf9c",
-                job9: "https://omg10.com/4/9570590", job10: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp",
-                job11: "https://omg10.com/4/9725607", job12: "https://t.me/f785OSC7KPk4MGJl4abot?startapp",
-                job13: "https://www.effectivegatecpm.com/rz01szx1?key=3dfb2fe6741dd7e2c5f8969bd11701c3",
-                job14: "https://www.effectivegatecpm.com/hjt54qy2f?key=850e1a1f668e2f8cf8fbc7662317181b",
-                job15: "https://www.effectivegatecpm.com/mqb7j0cy4?key=41aca66d8ffc76b0227f65cb991591ad",
-                job16: "https://omg10.com/4/9446627", job17: "https://omg10.com/4/9429975",
-                job18: "https://omg10.com/4/9717825", job19: "https://t.me/o0Uq6h5R0p80ZGE1bot?startapp",
-                job20: "https://t.me/khelahobe07_bot?startapp"
+    <!-- Floating Back to Home Button -->
+    <div class="back-home-btn" id="backHomeBtn"><span>🏠</span> Back to Home</div>
+</div>
+
+<script>
+    const ADSGRAM_BLOCK_ID = "int-29880";
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const backHomeBtn = document.getElementById('backHomeBtn');
+    let isUnlocked = true; // Direct access - no verification needed
+
+    function showAdsgramAd() {
+        return new Promise((resolve) => {
+            if (typeof Adsgram === 'undefined' || !Adsgram.init) {
+                setTimeout(() => resolve(true), 800);
+                return;
             }
-        };
-
-        // ==================== VARIABLES ====================
-        let currentUser = null, userData = null, currentJobTracking = null;
-        let isAdsGramShowing = false, adsGramReady = false, AdController = null;
-        let adsGramCount = 0;
-        let dailyStats = { date: new Date().toISOString().split('T')[0], newUsers: 0, totalUsers: 0, adsGramWatched: 0, jobsCompleted: 0, totalWithdrawals: 0, totalWithdrawalAmount: 0 };
-        
-        const tg = window.Telegram.WebApp;
-
-        // Helper Functions
-        function showAlert(msg) { const a=document.getElementById('custom-alert'); document.getElementById('alert-message').innerText=msg; a.classList.remove('hidden'); document.getElementById('alert-ok-btn').onclick=()=>a.classList.add('hidden'); }
-        function navigateTo(pageId) {
-            document.querySelectorAll('.sub-page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId) && document.getElementById(pageId).classList.add('active');
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active', 'text-accent'));
-            const activeLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
-            if(activeLink) activeLink.classList.add('active', 'text-accent');
-            if(pageId === 'wallet-page') loadWithdrawalHistory();
-            if(pageId === 'daily-jobs-page') { setupDailyJobs(); updateJobButtonStates(); }
-            if(pageId === 'notifications-page') loadNotifications();
-        }
-
-        // Storage
-        function loadUserFromStorage(userId) { const stored = localStorage.getItem(`user_${userId}`); return stored ? JSON.parse(stored) : null; }
-        function saveUserToStorage(data) { localStorage.setItem(`user_${currentUser.id}`, JSON.stringify(data)); }
-        function loadWithdrawals() { return JSON.parse(localStorage.getItem(`withdrawals_${currentUser?.id}`) || '[]'); }
-        function saveWithdrawal(withdrawal) { const w = loadWithdrawals(); w.push(withdrawal); localStorage.setItem(`withdrawals_${currentUser.id}`, JSON.stringify(w)); dailyStats.totalWithdrawals++; dailyStats.totalWithdrawalAmount += withdrawal.amount; saveDailyStats(); }
-        function loadDailyJobs() { return JSON.parse(localStorage.getItem(`daily_jobs_${currentUser?.id}`) || '[]'); }
-        function saveDailyJob(job) { const jobs = loadDailyJobs(); jobs.push(job); localStorage.setItem(`daily_jobs_${currentUser.id}`, JSON.stringify(jobs)); }
-        function loadDailyStats() { const today = new Date().toISOString().split('T')[0]; const saved = localStorage.getItem(`stats_${today}`); if(saved) dailyStats = JSON.parse(saved); else saveDailyStats(); }
-        function saveDailyStats() { localStorage.setItem(`stats_${dailyStats.date}`, JSON.stringify(dailyStats)); }
-        function incrementStat(stat) { dailyStats[stat]++; saveDailyStats(); }
-        
-        function updateTotalEarned() {
-            let total = userData.balance + (userData.totalWithdrawn || 0);
-            document.getElementById('total-earned') && (document.getElementById('total-earned').innerText = `$${total.toFixed(2)}`);
-        }
-
-        function updateUI() {
-            document.getElementById('coin-balance') && (document.getElementById('coin-balance').innerText = userData.balance.toFixed(2));
-            document.getElementById('wallet-coin-balance') && (document.getElementById('wallet-coin-balance').innerText = userData.balance.toFixed(2));
-            document.getElementById('profile-name') && (document.getElementById('profile-name').innerText = userData.name);
-            document.getElementById('profile-username') && (document.getElementById('profile-username').innerText = '@' + userData.username);
-            document.getElementById('profile-user-id') && (document.getElementById('profile-user-id').innerText = currentUser.id);
-            const remaining = CONFIG.app.dailyAdLimit.adsgram - adsGramCount;
-            document.getElementById('adsgram-left-count') && (document.getElementById('adsgram-left-count').innerText = `${remaining >=0 ? remaining : 0}/${CONFIG.app.dailyAdLimit.adsgram}`);
-            let totalWatched = adsGramCount;
-            document.getElementById('total-ads-count') && (document.getElementById('total-ads-count').innerText = `${totalWatched}/${CONFIG.app.dailyAdLimit.adsgram}`);
-            updateTotalEarned();
-        }
-
-        // AdsGram Ad Network
-        function initializeAdsGram() {
-            if (!CONFIG.adsgram.enabled) return;
-            if (typeof window.Adsgram !== 'undefined') {
-                try {
-                    AdController = window.Adsgram.init({ blockId: CONFIG.adsgram.blockId, debug: true });
-                    if (AdController && typeof AdController.show === 'function') { 
-                        adsGramReady = true; 
-                        document.getElementById('adsgram-status') && (document.getElementById('adsgram-status').innerHTML = '✅ Active (5/day)');
-                    }
-                    else setTimeout(initializeAdsGram, 2000);
-                } catch(e) { setTimeout(initializeAdsGram, 2000); }
-            } else { setTimeout(initializeAdsGram, 2000); }
-        }
-        
-        async function claimAdsGramReward() {
-            if (!adsGramReady) { showAlert("AdsGram is loading..."); initializeAdsGram(); return; }
-            if (isAdsGramShowing) return showAlert("Ad is playing...");
-            const today = new Date().toISOString().split('T')[0];
-            if (adsGramCount >= CONFIG.app.dailyAdLimit.adsgram) return showAlert(`Daily limit reached (${adsGramCount}/${CONFIG.app.dailyAdLimit.adsgram}). Try tomorrow.`);
-            isAdsGramShowing = true; const btn = document.getElementById('ad-claim-btn'); if(btn) { btn.innerHTML = '⏳ Loading...'; btn.disabled = true; }
             try {
-                await AdController.show();
-                adsGramCount++; userData.adsGramCount = adsGramCount; userData.lastAdsGramDate = today;
-                userData.balance += CONFIG.app.adReward; 
-                if(!userData.totalWithdrawn) userData.totalWithdrawn = 0;
-                dailyStats.adsGramWatched++;
-                saveUserToStorage(userData); saveDailyStats(); updateUI();
-                showAlert(`🎉 Earned $${CONFIG.app.adReward.toFixed(2)}! (${adsGramCount}/${CONFIG.app.dailyAdLimit.adsgram})`);
-            } catch(e) { console.error(e); showAlert("Ad error. Please try again."); }
-            finally { isAdsGramShowing = false; if(btn) { btn.innerHTML = 'Watch AdsGram'; btn.disabled = false; } }
-        }
+                const AdController = Adsgram.init({ blockId: ADSGRAM_BLOCK_ID });
+                AdController.show().then(() => resolve(true)).catch(() => resolve(true));
+            } catch(e) { resolve(true); }
+        });
+    }
 
-        // Daily Jobs
-        function setupDailyJobs() {
-            const container = document.getElementById('daily-jobs-container');
-            if(!container) return; container.innerHTML = '';
-            for(let i=1;i<=20;i++) {
-                const link = CONFIG.dailyJobLinks[`job${i}`];
-                container.innerHTML += `<div class="card-bg p-3 rounded-xl flex justify-between items-center"><div class="flex items-center gap-3"><div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">${i}</div><div><h3 class="font-medium text-white">Job ${i}</h3><p class="text-xs text-gray-400">$${CONFIG.app.dailyJobReward.toFixed(2)} earn</p></div></div><button id="job-btn-${i}" data-link="${link}" class="job-btn bg-green-600 text-white px-4 py-2 rounded-lg text-sm">Start</button></div>`;
+    // Smart redirect with back support (push state so back button returns to home)
+    async function redirectWithBackSupport(link) {
+        loadingOverlay.classList.add('show');
+        await showAdsgramAd();
+        loadingOverlay.classList.remove('show');
+        // Push a state so that pressing back returns to this app (home page)
+        if (window.history && window.history.pushState) {
+            window.history.pushState({ fromApp: true, homeVisible: true }, document.title, window.location.href);
+        }
+        window.location.href = link;
+    }
+
+    // Setup all click handlers
+    function attachAllClickHandlers() {
+        // Watch now buttons
+        const watchBtns = document.querySelectorAll('.watch-now-btn');
+        watchBtns.forEach(btn => {
+            btn.removeEventListener('click', watchHandler);
+            btn.addEventListener('click', watchHandler);
+        });
+        
+        // Clickable elements: categories, hot cinema, see-all, special offers, live cards, movie cards, vip pass
+        const clickableSelectors = ['.cat-item', '.hot-cinema', '.see-all', '.special-offer', '.live-card', '.movie-card'];
+        clickableSelectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach(el => {
+                el.removeEventListener('click', clickableHandler);
+                el.addEventListener('click', clickableHandler);
+            });
+        });
+        
+        const vipDiv = document.querySelector('.vip-pass');
+        if(vipDiv) {
+            vipDiv.removeEventListener('click', clickableHandler);
+            vipDiv.addEventListener('click', clickableHandler);
+        }
+        
+        // Featured hero container
+        const heroDiv = document.querySelector('.featured-movie');
+        if(heroDiv && !heroDiv.hasAttribute('data-listener')) {
+            heroDiv.setAttribute('data-listener', 'true');
+            heroDiv.addEventListener('click', (e) => {
+                if(e.target.classList && e.target.classList.contains('watch-now-btn')) return;
+                redirectWithBackSupport("https://t.me/khelahobe07_bot?startapp");
+            });
+        }
+    }
+    
+    async function watchHandler(e) {
+        e.stopPropagation();
+        const btn = e.currentTarget;
+        const link = btn.getAttribute('data-link');
+        if(link) await redirectWithBackSupport(link);
+    }
+    
+    async function clickableHandler(e) {
+        e.stopPropagation();
+        if(e.target.classList && e.target.classList.contains('watch-now-btn')) return;
+        let link = e.currentTarget.getAttribute('data-link');
+        if(!link && e.currentTarget.id === 'viewAllTrending') link = "https://t.me/khelahobe07_bot?startapp";
+        if(!link && e.currentTarget.id === 'viewAllLive') link = "https://t.me/khelahobe07_bot?startapp";
+        if(!link) link = "https://t.me/khelahobe07_bot?startapp";
+        await redirectWithBackSupport(link);
+    }
+    
+    // Handle popstate (back button pressed after returning from external link)
+    function handlePopState(event) {
+        // Ensure main content is visible (it already is, but just to be safe)
+        const mainDiv = document.getElementById('mainContent');
+        if (mainDiv) mainDiv.style.display = 'block';
+        // Refresh stats for fresh look
+        generateRealisticStats();
+        // Show back button again
+        if (backHomeBtn) backHomeBtn.style.display = 'flex';
+    }
+    
+    function manualBackToHome() {
+        // If user clicks floating button, ensure home is visible and push clean state
+        const mainDiv = document.getElementById('mainContent');
+        if (mainDiv) mainDiv.style.display = 'block';
+        window.history.pushState({ fromApp: true, homeVisible: true }, document.title, window.location.href);
+    }
+    
+    // Random stats for engagement
+    function generateRealisticStats() {
+        try {
+            if(document.getElementById('heroViews')) document.getElementById('heroViews').innerHTML = (Math.random() * 2.5 + 3.8).toFixed(1);
+            if(document.getElementById('heroLikes')) document.getElementById('heroLikes').innerHTML = Math.floor(Math.random() * 400 + 700);
+            if(document.getElementById('heroComments')) document.getElementById('heroComments').innerHTML = Math.floor(Math.random() * 150 + 210);
+            for(let i=1;i<=6;i++){
+                let viewEl = document.querySelector(`.view${i}`);
+                let likeEl = document.querySelector(`.like${i}`);
+                let commentEl = document.querySelector(`.comment${i}`);
+                let ratingEl = document.querySelector(`.rating${i}`);
+                if(viewEl) viewEl.innerHTML = Math.floor(Math.random() * 600 + 500);
+                if(likeEl) likeEl.innerHTML = Math.floor(Math.random() * 70 + 40);
+                if(commentEl) commentEl.innerHTML = Math.floor(Math.random() * 40 + 20);
+                if(ratingEl) ratingEl.innerHTML = (Math.random() * 0.5 + 4.4).toFixed(1);
             }
-            for(let i=1;i<=20;i++) document.getElementById(`job-btn-${i}`)?.addEventListener('click',()=>handleJobClick(i));
-        }
+            if(document.getElementById('live1Viewers')) document.getElementById('live1Viewers').innerHTML = (Math.random() * 2 + 2).toFixed(1)+'K watching';
+            if(document.getElementById('live1Likes')) document.getElementById('live1Likes').innerHTML = (Math.random() * 6 + 10).toFixed(1);
+            if(document.getElementById('live2Viewers')) document.getElementById('live2Viewers').innerHTML = (Math.random() * 2 + 1.2).toFixed(1)+'K watching';
+            if(document.getElementById('live2Likes')) document.getElementById('live2Likes').innerHTML = (Math.random() * 5 + 6).toFixed(1);
+            if(document.getElementById('vipViewer')) document.getElementById('vipViewer').innerHTML = Math.floor(Math.random() * 6000 + 11000).toLocaleString()+' members joined';
+            if(document.getElementById('trialTimer')) document.getElementById('trialTimer').innerHTML = Math.floor(Math.random() * 18 + 6)+' hours left';
+            if(document.getElementById('matchCount')) document.getElementById('matchCount').innerHTML = Math.floor(Math.random() * 200 + 110)+' online';
+        } catch(e){}
+    }
+    
+    function startAutoStatsUpdate() { 
+        setInterval(generateRealisticStats, 8000); 
+    }
+    
+    // Initialize everything on page load
+    window.addEventListener('DOMContentLoaded', () => {
+        attachAllClickHandlers();
+        generateRealisticStats();
+        startAutoStatsUpdate();
         
-        async function updateJobButtonStates() {
-            if(!currentUser) return;
-            const completed = loadDailyJobs(); const lastCompletions = {};
-            completed.forEach(job => { if(!lastCompletions[job.jobId] || new Date(job.completedAt) > lastCompletions[job.jobId]) lastCompletions[job.jobId] = new Date(job.completedAt); });
-            for(let i=1;i<=20;i++) {
-                const btn = document.getElementById(`job-btn-${i}`); if(!btn) continue;
-                const last = lastCompletions[i];
-                if(last && (Date.now() - last.getTime()) < 8*3600000) {
-                    const rem = 8*3600000 - (Date.now() - last.getTime());
-                    const h = Math.floor(rem/3600000), m = Math.floor((rem%3600000)/60000);
-                    btn.innerHTML = `${h}h ${m}m`; btn.className = 'bg-red-600 text-white px-4 py-2 rounded-lg text-sm opacity-70'; btn.disabled = true;
-                } else { btn.innerHTML = 'Start'; btn.className = 'job-btn bg-green-600 text-white px-4 py-2 rounded-lg text-sm'; btn.disabled = false; }
-            }
+        // Push initial state so back button works nicely
+        if (window.history && window.history.pushState) {
+            window.history.pushState({ fromApp: true, homeVisible: true }, document.title, window.location.href);
         }
-        
-        async function handleJobClick(jobId) {
-            const btn = document.getElementById(`job-btn-${jobId}`); if(btn.disabled) return showAlert("Job on cooldown!");
-            const link = btn.getAttribute('data-link'); if(!link) return;
-            currentJobTracking = { jobId, startTime: Date.now(), link };
-            tg.openLink(link); showAlert("Complete the task, return after 15 seconds to claim reward!");
-            setTimeout(() => { if(currentJobTracking?.jobId === jobId) completeJob(jobId); }, 15000);
-        }
-        
-        async function completeJob(jobId) {
-            saveDailyJob({ userId: currentUser.id, jobId, completedAt: new Date().toISOString(), coinsEarned: CONFIG.app.dailyJobReward });
-            userData.balance += CONFIG.app.dailyJobReward; 
-            if(!userData.totalWithdrawn) userData.totalWithdrawn = 0;
-            incrementStat('jobsCompleted');
-            saveUserToStorage(userData); updateUI(); updateJobButtonStates();
-            showAlert(`🎉 Earned $${CONFIG.app.dailyJobReward.toFixed(2)}!`); currentJobTracking = null;
-        }
-
-        // Withdrawals
-        function loadWithdrawalHistory() {
-            const w = loadWithdrawals(); const container = document.getElementById('withdrawal-history-list'); if(!container) return;
-            if(w.length===0) { container.innerHTML='<p class="text-center text-gray-400">No withdrawals</p>'; return; }
-            container.innerHTML = w.reverse().map(r => `<div class="card-bg p-3 rounded-xl flex justify-between"><div><p class="font-bold text-white">$${r.amount} - ${r.method}</p><p class="text-xs text-gray-400">${new Date(r.requestedAt).toLocaleDateString()}</p></div><span class="text-${r.status==='pending'?'yellow-400':'green-400'}">${r.status}</span></div>`).join('');
-        }
-        
-        async function handleWithdrawal() {
-            const amount = parseFloat(document.getElementById('withdraw-amount').value);
-            const method = document.getElementById('withdraw-method').value;
-            const paymentDetail = document.getElementById('payment-detail-input')?.value;
-            if(isNaN(amount) || amount < CONFIG.app.minWithdrawal) return showAlert(`Minimum withdrawal $${CONFIG.app.minWithdrawal}`);
-            if(amount > userData.balance) return showAlert("Insufficient balance");
-            if(!method || !paymentDetail) return showAlert("Fill all details");
-            userData.balance -= amount;
-            userData.totalWithdrawn = (userData.totalWithdrawn || 0) + amount;
-            saveWithdrawal({ userId: currentUser.id, amount, method, paymentDetails: paymentDetail, status: "pending", requestedAt: new Date().toISOString() });
-            saveUserToStorage(userData); updateUI(); loadWithdrawalHistory();
-            showAlert("Withdrawal request submitted!"); document.getElementById('withdraw-amount').value = ''; document.getElementById('withdraw-method').value = ''; document.getElementById('payment-details-container').innerHTML = '';
-        }
-        
-        function updateDynamicPaymentFields() {
-            const m = document.getElementById('withdraw-method').value;
-            const ph = m==='Bkash'?'Bkash Number': m==='Nagad'?'Nagad Number': m==='Rocket'?'Rocket Number':'Payment Details';
-            document.getElementById('payment-details-container').innerHTML = `<input id="payment-detail-input" type="text" placeholder="${ph}" class="w-full input-field">`;
-        }
-
-        // Admin & misc
-        function checkAdminAccess() { if(currentUser?.id === CONFIG.bot.adminChatId) document.getElementById('admin-access')?.classList.remove('hidden'); }
-        async function sendBonusToAllUsers() {
-            const amount = parseFloat(document.getElementById('bonus-amount').value);
-            if(!amount) return showAlert("Enter bonus amount");
-            for(let i=0;i<localStorage.length;i++) { const key=localStorage.key(i); if(key?.startsWith('user_')) { const u=JSON.parse(localStorage.getItem(key)); u.balance+=amount; localStorage.setItem(key,JSON.stringify(u)); } }
-            userData = loadUserFromStorage(currentUser.id); updateUI(); showAlert(`$${amount} bonus sent to all users!`);
-        }
-        
-        async function sendReport() {
-            const msg = `📊 Smart Income Report\n📅 ${new Date().toLocaleString()}\n👥 Total Users: ${dailyStats.totalUsers}\n💰 Today's Earnings: AdsGram:${dailyStats.adsGramWatched}\n💵 Total Withdrawals: $${dailyStats.totalWithdrawalAmount}`;
-            try { await fetch(`https://api.telegram.org/bot7793213912:AAFvPB1DZ8nrkUzXpwZPeXxplw6BNrirPxs/sendMessage`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ chat_id:CONFIG.bot.reportChannelId, text:msg }) }); } catch(e){}
-        }
-        
-        function loadNotifications() {
-            const n = [{title:"Payment Update!",msg:"Minimum withdrawal is $20.00"},{title:"Welcome!",msg:"Welcome to Smart Income!"},{title:"Earn More!",msg:"Complete daily jobs to earn $0.50 each"}];
-            document.getElementById('notifications-list').innerHTML = n.map(not=>`<div class="card-bg p-4 rounded-xl"><h3 class="font-bold text-white">${not.title}</h3><p class="text-sm text-gray-400">${not.msg}</p></div>`).join('');
-        }
-
-        function initTelegramApp() {
-            tg.ready(); tg.expand();
-            const user = tg.initDataUnsafe.user;
-            if(!user) { console.error("No user"); return; }
-            currentUser = { id: user.id.toString(), firstName: user.first_name || '', username: user.username || '', photoUrl: user.photo_url || '' };
-            userData = loadUserFromStorage(currentUser.id);
-            const today = new Date().toISOString().split('T')[0];
-            if(!userData) {
-                userData = { uid: currentUser.id, name: currentUser.firstName || 'User', username: currentUser.username || 'N/A', balance: 0, adsGramCount: 0, lastAdsGramDate: today, totalWithdrawn: 0, createdAt: new Date().toISOString() };
-                incrementStat('newUsers'); saveUserToStorage(userData);
-            } else {
-                if(userData.lastAdsGramDate !== today) { userData.adsGramCount = 0; userData.lastAdsGramDate = today; }
-                saveUserToStorage(userData);
-            }
-            adsGramCount = userData.adsGramCount || 0;
-            updateUI(); checkAdminAccess(); navigateTo('home-page');
-        }
-
-        function setupEventListeners() {
-            document.querySelectorAll('.nav-link').forEach(l=>l.addEventListener('click',e=>{ e.preventDefault(); navigateTo(l.dataset.page); }));
-            document.getElementById('ad-claim-btn')?.addEventListener('click', claimAdsGramReward);
-            document.getElementById('withdraw-btn')?.addEventListener('click', handleWithdrawal);
-            document.getElementById('home-withdraw-btn')?.addEventListener('click', ()=>navigateTo('wallet-page'));
-            document.getElementById('withdraw-method')?.addEventListener('change', updateDynamicPaymentFields);
-            document.getElementById('send-bonus-btn')?.addEventListener('click', sendBonusToAllUsers);
-            document.getElementById('send-manual-report')?.addEventListener('click', ()=>{ sendReport(); showAlert("Report sent!"); });
-        }
-
-        window.onload = () => { lucide.createIcons(); setupEventListeners(); initTelegramApp(); loadDailyStats(); initializeAdsGram(); setInterval(updateJobButtonStates, 60000); };
-        window.navigateTo = navigateTo; window.showAlert = showAlert;
-    </script>
+        window.addEventListener('popstate', handlePopState);
+    });
+    
+    if (backHomeBtn) backHomeBtn.addEventListener('click', manualBackToHome);
+    if (window.Telegram && window.Telegram.WebApp) { 
+        window.Telegram.WebApp.ready(); 
+        window.Telegram.WebApp.expand(); 
+    }
+</script>
 </body>
 </html>
